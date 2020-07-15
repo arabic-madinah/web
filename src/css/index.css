@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.arabic {
+    font-family: 'Scheherazade', serif;
+}
+
+.text-small {
+    font-size: 30px;
+}
+
+.text-medium {
+    font-size: 40px;
+}
+
+.text-big {
+    font-size: 50px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+div {
+    line-height: 1.7rem;
+}
