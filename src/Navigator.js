@@ -3,7 +3,7 @@ import {Component} from "react";
 import {BrowserRouter} from "react-router-dom";
 import {Route, Switch} from "react-router";
 import ProminentAppBar from "./components/Header";
-import Chapters, {Chapter1} from "./chapters/chapter1/Chapter1";
+import Chapters from "./chapters/chapter1/Chapter1";
 import Home from "./Home";
 import About from "./About";
 

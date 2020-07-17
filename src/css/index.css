@@ -12,6 +12,25 @@ code {
     monospace;
 }
 
+/* scheherazade-regular - latin_arabic */
+@font-face {
+    font-family: 'Scheherazade';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Scheherazade'), local('Scheherazade-Regular'),
+    url('../fonts/scheherazade-v17-latin_arabic-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/scheherazade-v17-latin_arabic-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* scheherazade-700 - latin_arabic */
+@font-face {
+    font-family: 'Scheherazade';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Scheherazade Bold'), local('Scheherazade-Bold'),
+    url('../fonts/scheherazade-v17-latin_arabic-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/scheherazade-v17-latin_arabic-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
 .arabic {
     font-family: 'Scheherazade', serif;
 }
@@ -38,4 +57,9 @@ code {
 
 div {
     line-height: 1.7rem;
+}
+
+.my-2 {
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
