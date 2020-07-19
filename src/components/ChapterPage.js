@@ -7,7 +7,6 @@ export default function ChapterPage ({children}) {
             container
             xl={12}
             direction="column"
-            alignItems="flex-start"
             style={{marginBottom: "45px"}}>
             {children}
         </Grid>

@@ -3,6 +3,8 @@ import React from "react";
 import {ArSm} from "./components/ArabicText";
 import Container from "@material-ui/core/Container";
 import Alert from "@material-ui/lab/Alert";
+import Button from "@material-ui/core/Button";
+import {Link} from "react-router-dom";
 
 
 export default function Home(){
@@ -27,6 +29,12 @@ export default function Home(){
                         This site ensues an effort in the hopes of summarizing the aforementioned works,
                         and effectively compile them into a single user-friendly and interactive web-course!
                     </p>
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        component={Link}
+                        to={"/learn/chapter1"}
+                    >Start Learning Now!</Button>
                 </div>
             </Grid>
         </Container>

@@ -1,8 +1,9 @@
 import React from "react";
 import ChapterPage from "../../../components/ChapterPage";
 import Paper from "@material-ui/core/Paper";
-import {ArMd, ArSm} from "../../../components/ArabicText";
+import {ArMd} from "../../../components/ArabicText";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
     highlighted: {
@@ -11,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
     },
 
     paper: {
-        width: "50%",
         margin: "20px auto",
         padding: "10px 10px"
     },
@@ -36,22 +36,32 @@ export function NounsDecline() {
                     Example:
                 </p>
 
-                <Paper elevation={2} className={classes.paper}>
-                    <ul>
-                        <li className={classes.list}>
-                            <ArMd className={classes.highlighted}>مُحَمَّدٌ</ArMd><ArMd> رَسُولُ اللَّهِ</ArMd>
-                        </li>
-                        <li className={classes.list}>
-                            <ArMd>أَشْهَدُ أَنَّ </ArMd>
-                            <ArMd className={classes.highlighted}>مُحَمَّدًا </ArMd>
-                            <ArMd>عَبْدُهُ وَ رَسُولُهُ</ArMd>
-                        </li>
-                        <li className={classes.list}>
-                            <ArMd>اَللَّهُمَّ صَلِّي عَلَى </ArMd>
-                            <ArMd className={classes.highlighted}>مُحَمَّدٍ</ArMd>
-                        </li>
-                    </ul>
-                </Paper>
+                <Grid
+                    container
+                    justify={"center"}
+                    alignItems={"center"}
+                >
+                    <Grid item lg={8} sm={12} justify="center" alignContent="center" >
+                        <Paper elevation={2} className={classes.paper}>
+                            <ul>
+                                <li className={classes.list}>
+                                    <ArMd className={classes.highlighted}>مُحَمَّدٌ</ArMd><ArMd> رَسُولُ اللَّهِ</ArMd>
+                                </li>
+                                <li className={classes.list}>
+                                    <ArMd>أَشْهَدُ أَنَّ </ArMd>
+                                    <ArMd className={classes.highlighted}>مُحَمَّدًا </ArMd>
+                                    <ArMd>عَبْدُهُ وَ رَسُولُهُ</ArMd>
+                                </li>
+                                <li className={classes.list}>
+                                    <ArMd>اَللَّهُمَّ صَلِّي عَلَى </ArMd>
+                                    <ArMd className={classes.highlighted}>مُحَمَّدٍ</ArMd>
+                                </li>
+                            </ul>
+                        </Paper>
+                    </Grid>
+                </Grid>
+
+
             </div>
         </ChapterPage>
     );
