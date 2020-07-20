@@ -17,7 +17,7 @@ export default function HeaderAppBar(props) {
                     centered
                     indicatorColor="secondary">
                     <Tab label="Home" value={"/"} component={Link} to={"/"}/>
-                    <Tab label="Learn" value={"/learn/chapter1"} component={Link} to={"/learn/chapter1"}/>
+                    <Tab label="Learn" value={"/learn"} component={Link} to={"/learn?chapter=1"}/>
                     <Tab label="About" value={"/about"} component={Link} to={"/about"}/>
                     <Tab label="Contact" value={"/contact"} component={Link} to={"/contact"}/>
                 </Tabs>

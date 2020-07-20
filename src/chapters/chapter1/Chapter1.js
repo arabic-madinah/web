@@ -2,36 +2,45 @@ import React from "react";
 import Container from "@material-ui/core/Container";
 import {Introduction} from "./lessons/Introduction";
 import NextPrevPagination from "../../components/NextPrevPagination";
-import {Route, Switch} from "react-router";
+import {Switch} from "react-router";
 import {useRouteMatch} from "react-router-dom";
 import {NounsDecline} from "./lessons/NounsDecline";
 
-export default function Chapters() {
-    let { path } = useRouteMatch();
+function LessonComponent({component, path}) {
     return (
-        <Switch>
-            <Route path={`${path}/chapter1`}>
-                <Chapter1 />
-            </Route>
-        </Switch>
-    )
+        <div>
+            <component />
+            <NextPrevPagination
+                forwardRoute={`${path}`}
+                />
+        </div>
+    );
 }
 
-export function Chapter1() {
+export function Chapter1({query}) {
     const { path } = useRouteMatch();
-
     return (
         <Container maxWidth={"md"}>
             <Switch>
-                <Route exact path={`${path}/`}>
-                    <Introduction />
-                    <NextPrevPagination forwardRoute={`${path}/nouns-decline`} forwardName={`1.3 nouns decline`} />
-                </Route>
-                <Route exact path={`${path}/nouns-decline`}>
-                    <NounsDecline />
-                </Route>
+                <LessonWrapper query={query} path={path}/>
             </Switch>
         </Container>
-
     );
+}
+
+function LessonWrapper({query, path}) {
+    switch (query.get("lesson")) {
+        default:
+        case "1":
+        case "2":
+            return (<div>
+                <Introduction />
+                <NextPrevPagination forwardRoute={`${path}?chapter=${query.get('chapter')}&lesson=3`} forwardName={`1.3 nouns decline`} />
+            </div>);
+        case "3":
+            return (<div>
+                    <NounsDecline />
+                </div>
+            )
+    }
 }

@@ -2,17 +2,19 @@ import React from "react";
 import {Component} from "react";
 import {BrowserRouter} from "react-router-dom";
 import {Route, Switch} from "react-router";
-import Chapters from "./chapters/chapter1/Chapter1";
 import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
 import HeaderAppBar from "./components/HeaderAppBar";
+import Chapters from "./chapters/Chapters";
+import PersistentDrawer from "./components/PersisentDrawer";
 
 export class Navigator extends Component {
     render() {
         return (
             <BrowserRouter>
                 <HeaderAppBar />
+                <PersistentDrawer />
                 <Switch>
                     <Route exact path="/">
                         <Home />
