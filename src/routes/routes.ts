@@ -3,8 +3,9 @@ enum Routes {
     Home = "/",
     Learn = "/learn",
     About = "/about",
-    Contact = "/contact"
+    Contact = "/contact",
 }
+
 
 export default Routes;
 

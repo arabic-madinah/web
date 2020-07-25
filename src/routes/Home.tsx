@@ -1,6 +1,6 @@
 import Grid from "@material-ui/core/Grid";
 import React from "react";
-import {ArSm} from "./components/ArabicText";
+import {ArSm} from "../components/ArabicText";
 import Container from "@material-ui/core/Container";
 import Alert from "@material-ui/lab/Alert";
 import Button from "@material-ui/core/Button";
@@ -17,7 +17,7 @@ export default function Home(){
                 alignItems="center"
             >
                 <Alert severity="warning">Note - this site is still under development!
-                    Want to see what we're currently working on?</Alert>
+                    Want to see what we're currently working on? <Link to={"/about"}>Find out here</Link></Alert>
                 <h1>Learn Arabic on this Site!</h1>
                 <div>
                     <ArSm><h3>السلام عليكم</h3></ArSm>
@@ -38,6 +38,5 @@ export default function Home(){
                 </div>
             </Grid>
         </Container>
-
     )
 }
