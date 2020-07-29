@@ -1,6 +1,6 @@
 import React from "react";
 import Drawer from "@material-ui/core/Drawer";
-import {chapters} from "../../chapters/types";
+import {chapters} from "../../chapters";
 import List from "@material-ui/core/List";
 import { DrawerListItem } from "./DrawerListItem";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -19,7 +19,7 @@ export default function SideDrawer({classes}: any) {
             <div className={classes.drawerContainer}>
             <List>
                 {chapters.map((chapter, count) => (
-                    <DrawerListItem key={count} chapter={chapter} classes={classes} />
+                    <DrawerListItem key={count} chapter={chapter} classes={classes} completed={false}/>
                 ))}
             </List>
             </div>

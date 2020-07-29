@@ -1,12 +1,14 @@
 import React from 'react';
 import {Navigator} from "./Navigator";
 import {Provider} from "react-redux";
-import store from "./store";
 import {BrowserRouter} from "react-router-dom";
 import HeaderAppBar from "./components/HeaderAppBar";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
 import Toolbar from '@material-ui/core/Toolbar';
 import useStyles from "./styles";
+import configureStore from "./configureStore";
+
+const store = configureStore();
 
 function App() {
     const classes = useStyles();

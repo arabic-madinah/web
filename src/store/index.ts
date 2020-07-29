@@ -1,6 +1,11 @@
-import {createStore} from "redux";
-import { rootReducer } from "../reducers/root";
+import {Reducer, combineReducers} from "redux";
+import ProgressReducer from "./progress/reducer";
+import {ProgressState} from "./progress/types";
 
-const store = createStore(rootReducer);
+export interface AppState {
+    progress: ProgressState
+}
 
-export default store;
+export const reducers: Reducer<AppState> = combineReducers<AppState>({
+    progress: ProgressReducer
+});

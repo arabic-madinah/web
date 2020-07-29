@@ -1,7 +1,7 @@
 import Grid from "@material-ui/core/Grid";
 import React from "react";
 
-export default function ChapterPage ({children}) {
+export default function ChapterPage ({children}: any) {
     return (
         <Grid
             container

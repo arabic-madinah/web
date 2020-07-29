@@ -1,14 +1,20 @@
+type SectionIndex = number;
 
-export interface Lesson {
-    title: string,
-    index: number
+export interface Section {
+    readonly title: string,
+    readonly index: SectionIndex
 }
 
 export interface Chapter {
     title: string,
     index: number,
-    lessons: Lesson[]
+    lessons: Section[]
 }
+
+export interface Sections {
+    [key: number]: Section
+} 
+
 
 export const chapters: Chapter[] = [
     {
@@ -26,7 +32,12 @@ export const chapters: Chapter[] = [
             {
                 title: "Nouns Decline",
                 index: 3
+            },
+            {
+                title: "Demonstrative Pronoun 'THIS'",
+                index: 4
             }
         ]
     }
 ];
+

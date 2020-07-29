@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container";
 import Alert from "@material-ui/lab/Alert";
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
-
+import Routes from "./routes";
 
 export default function Home(){
     return (
@@ -33,7 +33,7 @@ export default function Home(){
                         variant="contained"
                         color="secondary"
                         component={Link}
-                        to={"/learn/chapter1"}
+                        to={Routes.Learn}
                     >Start Learning Now!</Button>
                 </div>
             </Grid>
