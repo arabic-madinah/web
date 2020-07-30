@@ -3,7 +3,7 @@ import Container from "@material-ui/core/Container";
 import {Switch} from "react-router";
 import {useRouteMatch} from "react-router-dom";
 import {Chapter} from "../../chapters";
-import { LessonWrapper } from "../LessonWrapper";
+import { LessonQuery } from "../LessonQuery";
 
 export type ChapterProps = {
     query: URLSearchParams,
@@ -15,7 +15,7 @@ export function Chapter1({query, chapter}: ChapterProps) {
     return (
         <Container maxWidth={"md"}>
             <Switch>
-                <LessonWrapper query={query} path={path} chapter={chapter}/>
+                <LessonQuery query={query} path={path} chapter={chapter}/>
             </Switch>
         </Container>
     );

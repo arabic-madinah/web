@@ -11,10 +11,6 @@ export interface Chapter {
     lessons: Section[]
 }
 
-export interface Sections {
-    [key: number]: Section
-} 
-
 
 export const chapters: Chapter[] = [
     {
@@ -40,4 +36,3 @@ export const chapters: Chapter[] = [
         ]
     }
 ];
-

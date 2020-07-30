@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Children } from "react";
 import { Introduction } from "./chapter1/lessons/Introduction";
 import NextPrevPagination from "../components/NextPrevPagination";
 import { NounsDecline } from "./chapter1/lessons/NounsDecline";
@@ -6,13 +6,27 @@ import { Chapter } from "../chapters";
 import { useDispatch } from "react-redux";
 import { completeLesson } from "../store/progress/actions";
 import { DemonstrativePronounThis } from "./chapter1/lessons/DemonstrativePronounThis";
+import { Section } from "../chapters";
 
-type LessonWrapperProps = {
+interface LessonWrapperProps {
+    children: React.ReactChildren,
+    sections: Section[]
+}
+
+function LessonWrapper({children, sections}: LessonWrapperProps) {
+    return (
+        <div>
+            {children}
+        </div>
+    );
+}
+
+type LessonQueryProps = {
     query: URLSearchParams;
     path: string;
     chapter: Chapter;
 };
-export function LessonWrapper({ query, path, chapter }: LessonWrapperProps) {
+export function LessonQuery({ query, path, chapter }: LessonQueryProps) {
     const dispatch = useDispatch();
 
     const complete = (chapterIndex: number, lessonIndex: number) => {
