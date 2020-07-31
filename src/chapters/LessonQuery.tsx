@@ -6,6 +6,7 @@ import { Chapter, Section, chapters } from "../chapters";
 import { useDispatch } from "react-redux";
 import { completeLesson } from "../store/progress/actions";
 import { DemonstrativePronounThis } from "./chapter1/lessons/DemonstrativePronounThis";
+import {QuestionWhatIsThis} from "./chapter1/lessons/QuestionWhatIsThis";
 
 export interface SectionsProps {
     children: React.ReactNode,
@@ -94,9 +95,21 @@ export function LessonQuery({ query, path, chapter }: LessonQueryProps) {
                 currentLessons={[[1, 4]]}
                 complete={complete}
                 prevLesson={[chapters[0], chapters[0].lessons[2]]}
+                nextLesson={[chapters[0], chapters[0].lessons[4]]}
                     >
                     <DemonstrativePronounThis />
                 </Sections>
             );
+        case chapter.lessons[4].index.toString():
+            return (
+                <Sections
+                path={path}
+                currentLessons={[[1, 5]]}
+                complete={complete}
+                prevLesson={[chapters[0], chapters[0].lessons[3]]}
+                >
+                    <QuestionWhatIsThis/>
+                </Sections>
+            )
     }
 }
