@@ -11,8 +11,10 @@ const useStyles = makeStyles((theme: Theme) =>
             zIndex: theme.zIndex.drawer + 1,
         },
         drawer: {
-            width: drawerWidth,
-            flexShrink: 0,
+            [theme.breakpoints.up('sm')]: {
+                width: drawerWidth,
+                flexShrink: 0,
+            }
         },
         drawerPaper: {
             width: drawerWidth,

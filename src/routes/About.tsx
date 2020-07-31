@@ -5,12 +5,13 @@ import { List, ListItem, Paper } from "@material-ui/core";
 
 
 const tasksCompleted: string[] = [
-    "Side Bar / Side Drawer with navigation to each lesson"
+    "Side Bar / Side Drawer with navigation to each lesson",
+    "Make Side Drawer responsive for mobile"
 ]
 
 const tasksDoing: string[] = [
     "Progress of current amount of lessons completed",
-    "Make Side Drawer responsive for mobile"
+
 ]
 
 const tasksNotCompleted: string[] = [
@@ -72,7 +73,7 @@ export default function About(){
                 <Paper elevation={3} >
                     <List style={{margin: "auto", fontStyle: "italic"}}>
                         {
-                            tasksCompleted.map((task: string) => <ListItem style={{color: "red"}}>{task}</ListItem>)
+                            tasksCompleted.map((task: string) => <ListItem style={{color: "red", textDecoration: "line-through"}}>{task}</ListItem>)
                         }
                         {
                             tasksDoing.map((task: string) => <ListItem style={{color: "blue"}}>{task}</ListItem>)
