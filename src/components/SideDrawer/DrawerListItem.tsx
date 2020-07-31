@@ -34,12 +34,22 @@ export function DrawerListItem({chapter, classes}: DrawerListItemProps) {
         return !! progress.chapters.find(c => c.index === chapter.index)?.lessons.find(l => l.index === lesson.index)?.completed;
     }
 
+    const isChapterCompleted = (chapter: Chapter): boolean => {
+        return !! progress.chapters.find(c => c.index === chapter.index)?.completed;
+    }
+
 
     return (
         <div>
             <ListItem button onClick={handleClick}>
                 <ListItemIcon>
-                    <CheckCircleIcon style={{ color: green[500] }} />
+                    {
+                        isChapterCompleted(chapter) ?
+                        <CheckCircleIcon style={{ color: green[500] }} />
+                        :
+                        <RemoveCircleIcon />
+                    }
+                    
                 </ListItemIcon>
                 <ListItemText primary={`${chapter.index} ${chapter.title}`} />
                 {open ? <ExpandLess /> : <ExpandMore />}
@@ -61,7 +71,13 @@ export function DrawerListItem({chapter, classes}: DrawerListItemProps) {
                                         <RemoveCircleOutlineIcon style={{color: "gray"}} />
                                     }
                                 </ListItemIcon>
-                                <ListItemText primary={`${chapter.index}.${lesson.index} ${lesson.title}`} />
+                                <ListItemText 
+                                    primary={`${chapter.index}.${lesson.index} ${lesson.title}`}
+                                    classes={{
+                                        root: classes.drawerListItem,
+                                        primary: classes.drawerListItem
+                                    }}
+                                     />
                             </ListItem>))
                     }
                 </List>

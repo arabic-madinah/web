@@ -1,5 +1,5 @@
 import React from "react";
-import ChapterPage from "../../../components/ChapterPage";
+import SectionPage from "../../../components/SectionPage";
 import Paper from "@material-ui/core/Paper";
 import {ArMd} from "../../../components/ArabicText";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -26,7 +26,7 @@ export function NounsDecline() {
     const classes = useStyles();
 
     return (
-        <ChapterPage>
+        <SectionPage>
             <h2 className={"text-center"}>1.3 Nouns decline</h2>
             <div>
                 <p>
@@ -89,6 +89,6 @@ export function NounsDecline() {
                     each of these  cases, but for now we will just be introduced to their existence.
                 </p>
             </div>
-        </ChapterPage>
+        </SectionPage>
     );
 }

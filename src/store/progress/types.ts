@@ -1,14 +1,14 @@
 import { Action } from "redux";
-import { chapters } from "../../chapters";
 
-interface LessonState {
+export interface SectionState {
     index: number
     completed: boolean
 }
 
-interface ChapterState {
+export interface ChapterState {
     index: number
-    lessons: LessonState[]
+    lessons: SectionState[],
+    completed: boolean
 }
 
 export interface ProgressState {
@@ -19,7 +19,7 @@ export interface CompleteLessonAction extends Action {
     type: "COMPLETE_LESSON",
     payload: {
         chapterIndex: number,
-        lessonIndex: number,
+        sectionIndex: number,
     }
 }
 
@@ -27,7 +27,7 @@ export interface UncompleteLessonAction extends Action {
     type: "UNCOMPLETE_LESSON";
     payload: {
         chapterIndex: number,
-        lessonIndex: number
+        sectionIndex: number
     }
 }
 

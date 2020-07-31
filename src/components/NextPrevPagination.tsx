@@ -42,7 +42,7 @@ export default function NextPrevPagination(props: NextPrevPaginationProps) {
                     {forwardName} <ArrowForwardIosIcon fontSize="small" />
                 </Button>
                 :
-                null
+                <Button onClick={completeCurrent} color="secondary" variant="contained" style={{float: "right"}}>Complete</Button>
             }
         </div>
     );

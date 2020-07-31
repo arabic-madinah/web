@@ -20,6 +20,12 @@ const useStyles = makeStyles((theme: Theme) =>
         drawerContainer: {
             overflow: 'auto',
         },
+        drawerListItem: {
+            fontSize: "0.9rem",
+            lineHeight: "1.3",
+            color: "gray",
+            marginBottom: "2px"
+        },
         content: {
             flexGrow: 1,
             padding: theme.spacing(3),

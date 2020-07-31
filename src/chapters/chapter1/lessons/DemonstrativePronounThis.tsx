@@ -1,10 +1,10 @@
 import React from "react";
-import ChapterPage from "../../../components/ChapterPage";
+import SectionPage from "../../../components/SectionPage";
 
 export function DemonstrativePronounThis() {
     return (
-        <ChapterPage>
+        <SectionPage>
             <h2>1.4 Demonstrative Pronoun 'THIS'</h2>
-        </ChapterPage>
+        </SectionPage>
     )
 }

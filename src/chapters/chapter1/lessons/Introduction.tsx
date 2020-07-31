@@ -1,10 +1,10 @@
 import React from "react";
 import Paper from "@material-ui/core/Paper";
-import ChapterPage from "../../../components/ChapterPage";
+import SectionPage from "../../../components/SectionPage";
 
 export function Introduction() {
     return (
-        <ChapterPage>
+        <SectionPage>
             <h1>Chapter 1: Introduction</h1>
             <h2>Prerequisites</h2>
             <div><p>These lessons assume you have mastered the Arabic <b>reading</b> and <b>writing</b>.
@@ -89,6 +89,6 @@ export function Introduction() {
                     These are all definite nouns.
                 </p>
             </div>
-        </ChapterPage>
+        </SectionPage>
     )
 }
