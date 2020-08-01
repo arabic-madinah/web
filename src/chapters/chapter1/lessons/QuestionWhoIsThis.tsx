@@ -48,7 +48,7 @@ export function QuestionWhoIsThis({classes}: any) {
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>This is a doctor.</span>
-                                        <ArMd>هَذَا طَلَبٌ</ArMd>
+                                        <ArMd>هَذَا طَبِيبٌ</ArMd>
                                     </div>
                                 </ListItem>
                             </List>
