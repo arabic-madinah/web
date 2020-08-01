@@ -10,7 +10,7 @@ export function Navigator({classes}: any) {
     return (
         <Switch>
             <Route exact path={Routes.Home} component={Home} />
-            <Route path={Routes.Learn} component={Chapters} />
+            <Route path={Routes.Learn} render={(props => <Chapters {...props} classes={classes} />)}/>
             <Route exact path={Routes.About} component={About} />
             <Route exact path={Routes.Contact} component={Contact} />
         </Switch>

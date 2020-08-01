@@ -13,11 +13,12 @@ export default function Contact() {
             >
                 <div>
                     <p>
-                        This website is built with React.js and its source is hosted publicly
+                        This website is built with React.js + TypeScript in combination with the Material-UI framework for the styling.
+                        The source code of this project is open for everyone, and it is hosted publicly
                         on <a target="_blank" rel="noopener noreferrer" href="https://github.com/AjdinHusic/arabic-madinah" >github.com/AjdinHusic/arabic-madinah</a>.
                     </p>
                     <p>
-                        Any contributions are welcome and deeply appreciated. You can contribute
+                        Any contributions to the code are welcome and deeply appreciated. You can contribute
                         by means of a pull request on GitHub.
 
                         For any site feedback or feature requests, you can add a

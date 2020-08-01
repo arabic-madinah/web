@@ -5,37 +5,8 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { List } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
-import makeStyles from "@material-ui/core/styles/makeStyles";
 
-
-const useStyles = makeStyles((theme) => ({
-    highlighted: {
-        fontWeight: "bold",
-        color: "red"
-    },
-
-    paper: {
-        margin: "20px auto",
-        padding: "10px 10px"
-    },
-
-    list: {
-        marginTop: "16px",
-        marginVertical: "16px"
-    },
-    mr: {
-        marginRight: "5em"
-    },
-    blue: {
-        color: "blue"
-    },
-    red: {
-        color: "red"
-    }
-}));
-
-export function DemonstrativePronounThis() {
-    const classes = useStyles();
+export function DemonstrativePronounThis({classes}: any) {
 
     return (
         <SectionPage>

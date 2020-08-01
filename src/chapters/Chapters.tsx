@@ -7,7 +7,7 @@ export function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
 
-export default function Chapters() {
+export default function Chapters({classes}: any) {
     const {path} = useRouteMatch();
     const query = useQuery();
     return (
@@ -15,7 +15,7 @@ export default function Chapters() {
             <main>
                 <Switch>
                     <Route path={path}>
-                        <ChapterQuery query={query} />
+                        <ChapterQuery query={query} classes={classes} />
                     </Route>
                 </Switch>
             </main>

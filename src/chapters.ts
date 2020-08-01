@@ -34,8 +34,12 @@ export const chapters: Chapter[] = [
                 index: 4
             },
             {
-                title: "Question: 'What is this?'",
+                title: "Asking Question: 'What is this?'",
                 index: 5
+            },
+            {
+                title: "Asking Question: 'Who is this?'",
+                index: 6
             }
         ]
     }

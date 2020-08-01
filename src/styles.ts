@@ -32,6 +32,31 @@ const useStyles = makeStyles((theme: Theme) =>
             flexGrow: 1,
             padding: theme.spacing(3),
         },
+        highlighted: {
+            fontWeight: "bold",
+            color: "red"
+        },
+        paper: {
+            margin: "40px auto",
+            padding: "10px 10px"
+        },
+
+        list: {
+            marginTop: "16px",
+            marginVertical: "16px"
+        },
+        mr: {
+            marginRight: "5em"
+        },
+        mb: {
+            marginBottom: "5em"
+        },
+        blue: {
+            color: "blue"
+        },
+        red: {
+            color: "red"
+        },
         toolbar: theme.mixins.toolbar,
     }),
 );

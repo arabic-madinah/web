@@ -1,8 +1,11 @@
 import React from "react";
 import Paper from "@material-ui/core/Paper";
 import SectionPage from "../../../components/SectionPage";
+import {ArSm} from "../../../components/ArabicText";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
 
-export function Introduction() {
+export function Introduction({classes}: any) {
     return (
         <SectionPage>
             <h1>Chapter 1: Introduction</h1>
@@ -16,14 +19,14 @@ export function Introduction() {
             <div>In arabic, there are three <b>parts of speech</b>.
                 They are:
             </div>
-            <ul style={{listStylePosition: "inside"}}>
-                <li>Noun</li>
-                <li>Verb</li>
-                <li>Particle</li>
-            </ul>
+            <List style={{listStylePosition: "inside"}}>
+                <ListItem><span className={classes.mr}>Noun</span><ArSm>اِثْمٌ</ArSm></ListItem>
+                <ListItem><span className={classes.mr}>Verb</span><ArSm>فِعْلٌ</ArSm></ListItem>
+                <ListItem><span className={classes.mr}>Particle</span><ArSm>حَرفٌ</ArSm></ListItem>
+            </List>
             <div>
-                Every Arabic word that you encounter is part of either of the three named above.
-                The first part of this course will focus mainly on nouns and <i>Noun Phrases</i>. The second part will dive deeply into
+                Every Arabic word that you encounter is one of either of the three named above.
+                The first part of this course will focus mainly on nouns and <i>Noun Phrases</i> (sentences without verbs). The second part will dive deeply into
                 verbs and different tenses of the verbs, where we will learn to construct and recognize verbal phrases.
                 By the time we get to verbs, we will be prepared very well with the nouns to obtain a good understanding.
             </div>

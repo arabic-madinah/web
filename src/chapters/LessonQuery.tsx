@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { completeLesson } from "../store/progress/actions";
 import { DemonstrativePronounThis } from "./chapter1/lessons/DemonstrativePronounThis";
 import {QuestionWhatIsThis} from "./chapter1/lessons/QuestionWhatIsThis";
+import {QuestionWhoIsThis} from "./chapter1/lessons/QuestionWhoIsThis";
 
 export interface SectionsProps {
     children: React.ReactNode,
@@ -61,8 +62,9 @@ type LessonQueryProps = {
     query: URLSearchParams;
     path: string;
     chapter: Chapter;
+    classes: any
 };
-export function LessonQuery({ query, path, chapter }: LessonQueryProps) {
+export function LessonQuery({ query, path, chapter, classes }: LessonQueryProps) {
     const dispatch = useDispatch();
 
     const complete = (chapterIndex: number, lessonIndex: number) => {
@@ -75,7 +77,7 @@ export function LessonQuery({ query, path, chapter }: LessonQueryProps) {
         case chapter.lessons[1].index.toString():
             return (
             <Sections path={path} currentLessons={[[1, 1], [1, 2]]} complete={complete} nextLesson={[chapters[0], chapters[0].lessons[2]]}>
-                <Introduction />
+                <Introduction classes={classes}/>
             </Sections>);
         case chapter.lessons[2].index.toString():
             return (
@@ -85,7 +87,7 @@ export function LessonQuery({ query, path, chapter }: LessonQueryProps) {
             complete={complete} 
             prevLesson={[chapters[0], chapters[0].lessons[1]]}
             nextLesson={[chapters[0], chapters[0].lessons[3]]}>
-                <NounsDecline />
+                <NounsDecline classes={classes}/>
             </Sections>
             )
         case chapter.lessons[3].index.toString():
@@ -97,7 +99,7 @@ export function LessonQuery({ query, path, chapter }: LessonQueryProps) {
                 prevLesson={[chapters[0], chapters[0].lessons[2]]}
                 nextLesson={[chapters[0], chapters[0].lessons[4]]}
                     >
-                    <DemonstrativePronounThis />
+                    <DemonstrativePronounThis classes={classes}/>
                 </Sections>
             );
         case chapter.lessons[4].index.toString():
@@ -107,8 +109,20 @@ export function LessonQuery({ query, path, chapter }: LessonQueryProps) {
                 currentLessons={[[1, 5]]}
                 complete={complete}
                 prevLesson={[chapters[0], chapters[0].lessons[3]]}
+                nextLesson={[chapters[0], chapters[0].lessons[5]]}
                 >
-                    <QuestionWhatIsThis/>
+                    <QuestionWhatIsThis classes={classes}/>
+                </Sections>
+            );
+        case chapter.lessons[5].index.toString():
+            return (
+                <Sections
+                    path={path}
+                    currentLessons={[[1, 6]]}
+                    complete={complete}
+                    prevLesson={[chapters[0], chapters[0].lessons[4]]}
+                >
+                    <QuestionWhoIsThis classes={classes}/>
                 </Sections>
             )
     }

@@ -5,25 +5,7 @@ import {ArMd} from "../../../components/ArabicText";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Grid from "@material-ui/core/Grid";
 
-const useStyles = makeStyles((theme) => ({
-    highlighted: {
-        fontWeight: "bold",
-        color: "red"
-    },
-
-    paper: {
-        margin: "20px auto",
-        padding: "10px 10px"
-    },
-
-    list: {
-        marginTop: "16px",
-        marginVertical: "16px"
-    }
-}));
-
-export function NounsDecline() {
-    const classes = useStyles();
+export function NounsDecline({classes}: any) {
 
     return (
         <SectionPage>

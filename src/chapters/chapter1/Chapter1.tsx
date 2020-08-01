@@ -7,15 +7,16 @@ import { LessonQuery } from "../LessonQuery";
 
 export type ChapterProps = {
     query: URLSearchParams,
-    chapter: Chapter
+    chapter: Chapter,
+    classes: any
 }
 
-export function Chapter1({query, chapter}: ChapterProps) {
+export function Chapter1({query, chapter, classes}: ChapterProps) {
     const { path } = useRouteMatch();
     return (
         <Container maxWidth={"md"}>
             <Switch>
-                <LessonQuery query={query} path={path} chapter={chapter}/>
+                <LessonQuery query={query} path={path} chapter={chapter} classes={classes}/>
             </Switch>
         </Container>
     );
