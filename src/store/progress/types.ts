@@ -1,4 +1,5 @@
 import { Action } from "redux";
+import {Chapter, Section} from "../../chapters";
 
 export interface SectionState {
     index: number
@@ -12,7 +13,9 @@ export interface ChapterState {
 }
 
 export interface ProgressState {
-    chapters: ChapterState[]
+    chapters: ChapterState[],
+    currentChapter: Chapter,
+    currentSection: Section,
 }
 
 export interface CompleteLessonAction extends Action {
@@ -35,4 +38,18 @@ export interface ClearProgressAction extends Action {
     type: "CLEAR_PROGRESS"
 }
 
-export type ProgressActions = CompleteLessonAction | UncompleteLessonAction | ClearProgressAction;
+export interface SetCurrentChapterAction extends Action {
+    type: "SET_CURRENT_CHAPTER",
+    payload: {
+        chapter: Chapter
+    }
+}
+
+export interface SetCurrentSectionAction extends Action {
+    type: "SET_CURRENT_SECTION",
+    payload: {
+        section: Section
+    }
+}
+
+export type ProgressActions = CompleteLessonAction | UncompleteLessonAction | ClearProgressAction | SetCurrentChapterAction | SetCurrentSectionAction;

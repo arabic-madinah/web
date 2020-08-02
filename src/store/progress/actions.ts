@@ -1,5 +1,12 @@
 import {ActionCreator} from "redux";
-import {CompleteLessonAction, UncompleteLessonAction, ClearProgressAction} from "./types";
+import {
+    CompleteLessonAction,
+    UncompleteLessonAction,
+    ClearProgressAction,
+    SetCurrentSectionAction,
+    SetCurrentChapterAction
+} from "./types";
+import {Chapter, Section} from "../../chapters";
 
 export const completeLesson: ActionCreator<CompleteLessonAction> = (chapterIndex: number, sectionIndex: number) => ({
     type: "COMPLETE_LESSON",
@@ -19,4 +26,18 @@ export const uncompleteLesson: ActionCreator<UncompleteLessonAction> = (chapterI
 
 export const clearProgress: ActionCreator<ClearProgressAction> = () => ({
     type: "CLEAR_PROGRESS"
+});
+
+export const setCurrentChapter: ActionCreator<SetCurrentChapterAction> = (chapter: Chapter) => ({
+    type: "SET_CURRENT_CHAPTER",
+    payload: {
+        chapter
+    }
+});
+
+export const setCurrentSection: ActionCreator<SetCurrentSectionAction> = (section: Section) => ({
+    type: "SET_CURRENT_SECTION",
+    payload: {
+        section
+    }
 });

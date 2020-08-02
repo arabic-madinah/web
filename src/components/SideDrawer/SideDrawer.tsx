@@ -16,8 +16,29 @@ interface Props extends WithStyles<typeof styles> {
 }
 
 export default function SideDrawer({classes}: Props) {
-    const open = useSelector((state: AppState) => state.drawerOpen);
     const dispatch = useDispatch();
+
+    const {open, currentSection, currentChapter} = useSelector((state: AppState) => ({
+        open: state.drawerOpen,
+        currentChapter: state.progress.currentChapter,
+        currentSection: state.progress.currentSection,
+    }));
+
+    const drawerContainer = (
+        <div className={classes.drawerContainer}>
+            <List>
+                {chapters.map((chapter, count) => (
+                    <DrawerListItem key={count}
+                                    chapter={chapter}
+                                    classes={classes}
+                                    completed={false}
+                                    currentChapter={currentChapter}
+                                    currentSection={currentSection}
+                    />
+                ))}
+            </List>
+        </div>
+    );
 
     return (
         <>
@@ -30,13 +51,7 @@ export default function SideDrawer({classes}: Props) {
                     }}
                 >
                     <Toolbar />
-                    <div className={classes.drawerContainer}>
-                        <List>
-                            {chapters.map((chapter, count) => (
-                                <DrawerListItem key={count} chapter={chapter} classes={classes} completed={false}/>
-                            ))}
-                        </List>
-                    </div>
+                    {drawerContainer}
                 </Drawer>
             </Hidden>
             <Hidden smUp>
@@ -50,13 +65,7 @@ export default function SideDrawer({classes}: Props) {
                 }}
                 >
                     <Toolbar />
-                    <div className={classes.drawerContainer}>
-                        <List>
-                            {chapters.map((chapter, count) => (
-                                <DrawerListItem key={count} chapter={chapter} classes={classes} completed={false}/>
-                            ))}
-                        </List>
-                    </div>
+                    {drawerContainer}
                 </Drawer>
             </Hidden>
         </>

@@ -4,7 +4,7 @@ import NextPrevPagination from "../components/NextPrevPagination";
 import { NounsDecline } from "./chapter1/lessons/NounsDecline";
 import { Chapter, Section, chapters } from "../chapters";
 import { useDispatch } from "react-redux";
-import { completeLesson } from "../store/progress/actions";
+import {completeLesson, setCurrentSection} from "../store/progress/actions";
 import { DemonstrativePronounThis } from "./chapter1/lessons/DemonstrativePronounThis";
 import {QuestionWhatIsThis} from "./chapter1/lessons/QuestionWhatIsThis";
 import {QuestionWhoIsThis} from "./chapter1/lessons/QuestionWhoIsThis";
@@ -77,11 +77,13 @@ export function LessonQuery({ query, path, chapter, classes }: LessonQueryProps)
         default:
         case chapter.lessons[0].index.toString():
         case chapter.lessons[1].index.toString():
+            dispatch(setCurrentSection(chapter.lessons[0]));
             return (
             <Sections path={path} currentLessons={[[1, 1], [1, 2]]} complete={complete} nextLesson={[chapters[0], chapters[0].lessons[2]]}>
                 <Introduction classes={classes}/>
             </Sections>);
         case chapter.lessons[2].index.toString():
+            dispatch(setCurrentSection(chapter.lessons[2]));
             return (
             <Sections 
             path={path} 
@@ -93,6 +95,7 @@ export function LessonQuery({ query, path, chapter, classes }: LessonQueryProps)
             </Sections>
             )
         case chapter.lessons[3].index.toString():
+            dispatch(setCurrentSection(chapter.lessons[3]));
             return (
                 <Sections 
                 path={path}
@@ -105,6 +108,7 @@ export function LessonQuery({ query, path, chapter, classes }: LessonQueryProps)
                 </Sections>
             );
         case chapter.lessons[4].index.toString():
+            dispatch(setCurrentSection(chapter.lessons[4]));
             return (
                 <Sections
                 path={path}
@@ -117,6 +121,7 @@ export function LessonQuery({ query, path, chapter, classes }: LessonQueryProps)
                 </Sections>
             );
         case chapter.lessons[5].index.toString():
+            dispatch(setCurrentSection(chapter.lessons[5]));
             return (
                 <Sections
                     path={path}

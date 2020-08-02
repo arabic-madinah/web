@@ -1,12 +1,17 @@
 import { ProgressState } from "./store/progress/types";
 import { ChapterState, SectionState } from "./store/progress/types";
+import {Chapter, Section} from "./chapters";
 
 export class ProgressTracker implements ProgressState{
 
-    chapters: ChapterState[]
+    chapters: ChapterState[];
+    currentChapter: Chapter;
+    currentSection: Section;
 
-    constructor(chapters: ChapterState[]) {
-        this.chapters = chapters;
+    constructor(state: ChapterState[], currentChapter: Chapter, currentSection: Section) {
+        this.chapters = state;
+        this.currentChapter = currentChapter;
+        this.currentSection = currentSection;
     }
 
     checkChapterCompleted(chapterState: ChapterState) {

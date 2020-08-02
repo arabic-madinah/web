@@ -56,6 +56,9 @@ export const styles = (theme: Theme) => createStyles({
         red: {
             color: "red"
         },
+        nested: {
+            paddingLeft: theme.spacing(4),
+        },
         menuButton: {
             marginRight: theme.spacing(2),
             [theme.breakpoints.up('sm')]: {

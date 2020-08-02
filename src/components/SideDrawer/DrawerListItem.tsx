@@ -15,15 +15,18 @@ import Routes from "../../routes/routes";
 import {green} from "@material-ui/core/colors";
 import {useSelector} from "react-redux";
 import {AppState} from "../../store";
+import {WithStyles} from "@material-ui/core";
+import {styles} from "../../styles";
 
-interface DrawerListItemProps {
+interface DrawerListItemProps extends WithStyles<typeof styles> {
     chapter: Chapter
-    classes: any
-    completed: boolean
+    completed: boolean,
+    currentChapter: Chapter,
+    currentSection: Section,
 }
 
-export function DrawerListItem({chapter, classes}: DrawerListItemProps) {
-    const [open, setOpen] = React.useState(false);
+export function DrawerListItem({chapter, classes, currentChapter, currentSection}: DrawerListItemProps) {
+    const [open, setOpen] = React.useState(()=>chapter.index === currentChapter.index);
     const progress = useSelector((state: AppState) => state.progress);
 
     const handleClick = () => {
@@ -41,7 +44,7 @@ export function DrawerListItem({chapter, classes}: DrawerListItemProps) {
 
     return (
         <div>
-            <ListItem button onClick={handleClick}>
+            <ListItem button onClick={handleClick} selected={chapter.index === currentChapter.index}>
                 <ListItemIcon>
                     {
                         isChapterCompleted(chapter) ?
@@ -58,27 +61,30 @@ export function DrawerListItem({chapter, classes}: DrawerListItemProps) {
                 <List component="div" disablePadding>
                     {
                         chapter.lessons.map(lesson => (
-                            <ListItem
-                                key={lesson.index}
-                                component={Link}
-                                to={`${Routes.Learn}?chapter=${chapter.index}&lesson=${lesson.index}`}
-                                className={classes.nested}>
-                                <ListItemIcon>
-                                    {
-                                        isLessonCompleted(chapter, lesson) ?
-                                        <CheckCircleOutlineIcon style={{color: green[500]}} />
-                                        :
-                                        <RemoveCircleOutlineIcon style={{color: "gray"}} />
-                                    }
-                                </ListItemIcon>
-                                <ListItemText 
-                                    primary={`${chapter.index}.${lesson.index} ${lesson.title}`}
-                                    classes={{
-                                        root: classes.drawerListItem,
-                                        primary: classes.drawerListItem
-                                    }}
-                                     />
-                            </ListItem>))
+                                <ListItem
+                                    selected={chapter.index === currentChapter.index && lesson.index === currentSection.index}
+                                    button
+                                    key={lesson.index}
+                                    component={Link}
+                                    to={`${Routes.Learn}?chapter=${chapter.index}&lesson=${lesson.index}`}
+                                    className={classes.nested}>
+                                    <ListItemIcon>
+                                        {
+                                            isLessonCompleted(chapter, lesson) ?
+                                                <CheckCircleOutlineIcon style={{color: green[500]}} />
+                                                :
+                                                <RemoveCircleOutlineIcon style={{color: "gray"}} />
+                                        }
+                                    </ListItemIcon>
+                                    <ListItemText
+                                        primary={`${chapter.index}.${lesson.index} ${lesson.title}`}
+                                        classes={{
+                                            root: classes.drawerListItem,
+                                            primary: classes.drawerListItem
+                                        }}
+                                    />
+                                </ListItem>
+                            ))
                     }
                 </List>
             </Collapse>
