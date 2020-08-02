@@ -6,11 +6,16 @@ import {Link, useLocation} from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Hidden from "@material-ui/core/Hidden";
-import {Toolbar} from "@material-ui/core";
+import {Toolbar, WithStyles} from "@material-ui/core";
 import {useDispatch} from "react-redux";
 import {toggleDrawerOpen} from "../store/drawer/actions";
+import {styles} from "../styles";
 
-export default function HeaderAppBar({classes}: any) {
+interface Props extends WithStyles<typeof styles>{
+
+}
+
+export default (function HeaderAppBar({classes}: Props){
     const { pathname } = useLocation();
     const dispatch = useDispatch();
     const tabs = (<Tabs
@@ -50,5 +55,5 @@ export default function HeaderAppBar({classes}: any) {
             </Hidden>
         </AppBar>
     );
-}
+});
 

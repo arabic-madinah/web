@@ -2,8 +2,7 @@ import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+export const styles = (theme: Theme) => createStyles({
         root: {
             display: 'flex',
         },
@@ -57,8 +56,14 @@ const useStyles = makeStyles((theme: Theme) =>
         red: {
             color: "red"
         },
+        menuButton: {
+            marginRight: theme.spacing(2),
+            [theme.breakpoints.up('sm')]: {
+                display: 'none',
+            },
+        },
         toolbar: theme.mixins.toolbar,
-    }),
-);
+});
+const useStyles = makeStyles(styles);
 
 export default useStyles;

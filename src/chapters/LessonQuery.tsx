@@ -8,6 +8,8 @@ import { completeLesson } from "../store/progress/actions";
 import { DemonstrativePronounThis } from "./chapter1/lessons/DemonstrativePronounThis";
 import {QuestionWhatIsThis} from "./chapter1/lessons/QuestionWhatIsThis";
 import {QuestionWhoIsThis} from "./chapter1/lessons/QuestionWhoIsThis";
+import {WithStyles} from "@material-ui/core";
+import {styles} from "../styles";
 
 export interface SectionsProps {
     children: React.ReactNode,
@@ -58,12 +60,12 @@ function Sections({children, path, currentLessons, prevLesson, nextLesson, compl
     )
 }
 
-type LessonQueryProps = {
+interface LessonQueryProps extends WithStyles<typeof styles> {
     query: URLSearchParams;
     path: string;
     chapter: Chapter;
-    classes: any
-};
+}
+
 export function LessonQuery({ query, path, chapter, classes }: LessonQueryProps) {
     const dispatch = useDispatch();
 

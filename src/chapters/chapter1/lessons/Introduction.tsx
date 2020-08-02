@@ -4,8 +4,10 @@ import SectionPage from "../../../components/SectionPage";
 import {ArSm} from "../../../components/ArabicText";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import {WithStyles} from "@material-ui/core";
+import {styles} from "../../../styles";
 
-export function Introduction({classes}: any) {
+export function Introduction({classes}: WithStyles<typeof styles>) {
     return (
         <SectionPage>
             <h1>Chapter 1: Introduction</h1>
@@ -20,7 +22,7 @@ export function Introduction({classes}: any) {
                 They are:
             </div>
             <List style={{listStylePosition: "inside"}}>
-                <ListItem><span className={classes.mr}>Noun</span><ArSm>اِثْمٌ</ArSm></ListItem>
+                <ListItem><span className={classes.mr}>Noun</span><ArSm>اِسْمٌٌ</ArSm></ListItem>
                 <ListItem><span className={classes.mr}>Verb</span><ArSm>فِعْلٌ</ArSm></ListItem>
                 <ListItem><span className={classes.mr}>Particle</span><ArSm>حَرفٌ</ArSm></ListItem>
             </List>

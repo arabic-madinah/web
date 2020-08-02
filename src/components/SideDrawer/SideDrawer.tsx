@@ -8,8 +8,14 @@ import Toolbar from "@material-ui/core/Toolbar";
 import {useDispatch, useSelector} from "react-redux";
 import {AppState} from "../../store";
 import {toggleDrawerOpen} from "../../store/drawer/actions";
+import {WithStyles} from "@material-ui/core";
+import {styles} from "../../styles";
 
-export default function SideDrawer({classes}: any) {
+interface Props extends WithStyles<typeof styles> {
+
+}
+
+export default function SideDrawer({classes}: Props) {
     const open = useSelector((state: AppState) => state.drawerOpen);
     const dispatch = useDispatch();
 

@@ -2,10 +2,11 @@ import React from "react";
 import SectionPage from "../../../components/SectionPage";
 import Paper from "@material-ui/core/Paper";
 import {ArMd} from "../../../components/ArabicText";
-import makeStyles from "@material-ui/core/styles/makeStyles";
 import Grid from "@material-ui/core/Grid";
+import {WithStyles} from "@material-ui/core";
+import {styles} from "../../../styles";
 
-export function NounsDecline({classes}: any) {
+export function NounsDecline({classes}: WithStyles<typeof styles>) {
 
     return (
         <SectionPage>

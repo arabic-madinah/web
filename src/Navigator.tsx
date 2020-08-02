@@ -5,8 +5,14 @@ import About from "./routes/About";
 import Contact from "./routes/Contact";
 import Chapters from "./chapters/Chapters";
 import Routes from "./routes/routes";
+import {WithStyles} from "@material-ui/core";
+import {styles} from "./styles";
 
-export function Navigator({classes}: any) {
+interface Props extends WithStyles<typeof styles> {
+
+}
+
+export function Navigator({classes}: Props) {
     return (
         <Switch>
             <Route exact path={Routes.Home} component={Home} />

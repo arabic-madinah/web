@@ -3,21 +3,23 @@ import SectionPage from "../../../components/SectionPage";
 import { ArSm, ArMd } from "../../../components/ArabicText";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import { List } from "@material-ui/core";
+import {List, WithStyles} from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
+import {styles} from "../../../styles";
 
-export function DemonstrativePronounThis({classes}: any) {
+export function DemonstrativePronounThis({classes}: WithStyles<typeof styles>) {
 
     return (
         <SectionPage>
             <h2>1.4 Demonstrative Pronoun 'THIS'</h2>
             <div>
                 <p>
-                    In this section we will learn about the <i>demonstrative pronoun</i> <ArSm>هذا</ArSm> meaning "<i>this</i>".
+                    In this section we will learn about the <i>demonstrative pronoun</i> <ArSm>هَـٰذَا</ArSm> meaning "<i>this</i>".
                     This pronoun is part of the group of <b>nouns</b> in Arabic.
                 </p>
                 <p>
-                    Note that <ArSm>هذا</ArSm> is actually pronounced as <ArSm>هَاذَا</ArSm>, (with the long a-sound), but the alif is not written.
+                    Note that <ArSm>هذا</ArSm> is actually pronounced as <ArSm>هَاذَا</ArSm>, (with the long a-sound),
+                    but the first alif is not written.
                 </p>
                 <p>
                     A demonstrative pronoun in Arabic is called <ArSm>اِثمُ الإشَارَة</ArSm>.

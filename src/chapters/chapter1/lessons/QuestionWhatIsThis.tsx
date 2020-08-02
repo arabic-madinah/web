@@ -3,9 +3,10 @@ import SectionPage from "../../../components/SectionPage";
 import { ArSm, ArMd } from "../../../components/ArabicText";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import {List, ListItem} from "@material-ui/core";
+import {List, ListItem, WithStyles} from "@material-ui/core";
+import {styles} from "../../../styles";
 
-export function QuestionWhatIsThis({classes}: any) {
+export function QuestionWhatIsThis({classes}: WithStyles<typeof styles>) {
 
     return (
         <SectionPage>

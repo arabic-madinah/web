@@ -4,11 +4,12 @@ import {Switch} from "react-router";
 import {useRouteMatch} from "react-router-dom";
 import {Chapter} from "../../chapters";
 import { LessonQuery } from "../LessonQuery";
+import {WithStyles} from "@material-ui/core";
+import {styles} from "../../styles";
 
-export type ChapterProps = {
+export interface ChapterProps extends WithStyles<typeof styles> {
     query: URLSearchParams,
     chapter: Chapter,
-    classes: any
 }
 
 export function Chapter1({query, chapter, classes}: ChapterProps) {
