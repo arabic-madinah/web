@@ -160,7 +160,7 @@ export function DemonstrativePronounThat({classes}: WithStyles<typeof styles>) {
                             <ListItem>
                                 <div>
                                     <span className={classes.mr}>
-                                        That is a sugar and that is a milk.
+                                        This is a sugar and that is a milk.
                                     </span>
                                     <ArMd className={classes.floatRight}>هَذَا سُكَّرٌ  وَذَلِكَ لَبَنٌ</ArMd>
                                 </div>
