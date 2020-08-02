@@ -10,6 +10,7 @@ import {QuestionWhatIsThis} from "./chapter1/lessons/QuestionWhatIsThis";
 import {QuestionWhoIsThis} from "./chapter1/lessons/QuestionWhoIsThis";
 import {WithStyles} from "@material-ui/core";
 import {styles} from "../styles";
+import {DemonstrativePronounThat} from "./chapter1/lessons/DemonstrativePronounThat";
 
 export interface SectionsProps {
     children: React.ReactNode,
@@ -128,8 +129,21 @@ export function LessonQuery({ query, path, chapter, classes }: LessonQueryProps)
                     currentLessons={[[1, 6]]}
                     complete={complete}
                     prevLesson={[chapters[0], chapters[0].lessons[4]]}
+                    nextLesson={[chapters[0], chapters[0].lessons[6]]}
                 >
                     <QuestionWhoIsThis classes={classes}/>
+                </Sections>
+            );
+        case chapter.lessons[6].index.toString():
+            dispatch(setCurrentSection(chapter.lessons[6]));
+            return (
+                <Sections
+                    path={path}
+                    currentLessons={[[1, 7]]}
+                    complete={complete}
+                    prevLesson={[chapters[0], chapters[0].lessons[5]]}
+                >
+                    <DemonstrativePronounThat classes={classes} />
                 </Sections>
             )
     }

@@ -22,7 +22,7 @@ export function DemonstrativePronounThis({classes}: WithStyles<typeof styles>) {
                     but the first alif is not written.
                 </p>
                 <p>
-                    A demonstrative pronoun in Arabic is called <ArSm>اِثمُ الإشَارَة</ArSm>.
+                    A demonstrative pronoun in Arabic is called <ArSm>اِسْمُ الْإِشَارَةِ</ArSm>.
                     Consider the following sentences using the word <ArSm>هذا</ArSm>.
                 </p>
 

@@ -40,6 +40,10 @@ export const chapters: Chapter[] = [
             {
                 title: "Asking Question: 'Who is this?'",
                 index: 6
+            },
+            {
+                title: "Demonstrative Pronoun 'THAT'",
+                index: 7
             }
         ]
     }

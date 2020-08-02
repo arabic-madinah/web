@@ -10,7 +10,7 @@ import {styles} from "../../../styles";
 export function QuestionWhoIsThis({classes}: WithStyles<typeof styles>) {
     return (
         <SectionPage>
-            <h2>Asking a Question: "Who is This?"</h2>
+            <h2>1.6 Asking a Question: "Who is This?"</h2>
             <div>
                 <p>All nouns in Arabic can be classified into two categories: <ArSm>عَاقِل</ArSm> (things with intellect),
                     and  <ArSm> غَيْر عَاقِل</ArSm> (things without intellect, like objects, animals etc.).

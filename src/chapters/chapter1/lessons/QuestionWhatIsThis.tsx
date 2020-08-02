@@ -10,7 +10,7 @@ export function QuestionWhatIsThis({classes}: WithStyles<typeof styles>) {
 
     return (
         <SectionPage>
-            <h2>Asking a Question: "What is This?"</h2>
+            <h2>1.5 Asking a Question: "What is This?"</h2>
             <div>
                 <p>The word <ArSm>مَا</ArSm> in Arabic is used for asking questions. It's meaning is "what".
                     In this section we will learn about the usage of <ArSm>مَا هذا؟</ArSm> meaning "what is this?".

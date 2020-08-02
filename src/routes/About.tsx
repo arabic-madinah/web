@@ -11,13 +11,12 @@ const tasksCompleted: string[] = [
 
 const tasksDoing: string[] = [
     "Progress of current amount of lessons completed",
-
+    "Implementing all the lessons from Madinah book 1",
 ]
 
 const tasksNotCompleted: string[] = [
     "Interactive program of learning vocabulary per lesson",
     "Interactive program for pop-quizzing grammar corresponding to a lesson",
-    "Implementing all the lessons from Madinah book 1",
     "Implementing all the lessons from Madinah book 2",
     "Implementing all the lessons from Madinah book 3",
     "Add system for switching to different languages to learn from",

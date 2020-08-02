@@ -44,6 +44,21 @@ export const styles = (theme: Theme) => createStyles({
             marginTop: "16px",
             marginVertical: "16px"
         },
+        bold: {
+            fontWeight: "bold"
+        },
+        floatRight: {
+            float: "right"
+        },
+        pxy: {
+            padding: "16px"
+        },
+        mxy: {
+           margin: "16px"
+        },
+        mlAuto: {
+            marginLeft: "auto"
+        },
         mr: {
             marginRight: "5em"
         },
