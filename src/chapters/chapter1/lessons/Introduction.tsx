@@ -22,7 +22,7 @@ export function Introduction({classes}: WithStyles<typeof styles>) {
                 They are:
             </div>
             <List style={{listStylePosition: "inside"}}>
-                <ListItem><span className={classes.mr}>Noun</span><ArSm>اِسْمٌٌ</ArSm></ListItem>
+                <ListItem><span className={classes.mr}>Noun</span><ArSm>اِسْمٌ</ArSm></ListItem>
                 <ListItem><span className={classes.mr}>Verb</span><ArSm>فِعْلٌ</ArSm></ListItem>
                 <ListItem><span className={classes.mr}>Particle</span><ArSm>حَرفٌ</ArSm></ListItem>
             </List>
