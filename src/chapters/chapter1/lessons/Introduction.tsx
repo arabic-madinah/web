@@ -28,8 +28,9 @@ export function Introduction({classes}: WithStyles<typeof styles>) {
             </List>
             <div>
                 Every Arabic word that you encounter is one of either of the three named above.
-                The first part of this course will focus mainly on nouns and <i>Noun Phrases</i> (sentences without verbs). The second part will dive deeply into
-                verbs and different tenses of the verbs, where we will learn to construct and recognize verbal phrases.
+                The first part of this course will focus mainly on nouns and <b>Nominal Sentences</b> (sentences with nouns / without verbs).
+                The second part will dive deeply into verbs and different tenses of the verbs,
+                where we will learn to construct and recognize <b>Verbal Sentences</b>.
                 By the time we get to verbs, we will be prepared very well with the nouns to obtain a good understanding.
             </div>
 

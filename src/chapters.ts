@@ -44,6 +44,10 @@ export const chapters: Chapter[] = [
             {
                 title: "Demonstrative Pronoun 'THAT'",
                 index: 7
+            },
+            {
+                title: "Nominal Sentences",
+                index: 8
             }
         ]
     }
