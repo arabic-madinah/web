@@ -40,7 +40,7 @@ export function QuestionWhoIsThis({classes}: WithStyles<typeof styles>) {
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>Who is this?</span>
-                                        <ArMd>مَنْ هَذَا؟</ArMd>
+                                        <ArMd className={classes.floatRight}>مَنْ هَذَا؟</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
@@ -49,7 +49,7 @@ export function QuestionWhoIsThis({classes}: WithStyles<typeof styles>) {
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>This is a doctor.</span>
-                                        <ArMd>هَذَا طَبِيبٌ</ArMd>
+                                        <ArMd className={classes.floatRight}>هَذَا طَبِيبٌ</ArMd>
                                     </div>
                                 </ListItem>
                             </List>
@@ -75,133 +75,133 @@ export function QuestionWhoIsThis({classes}: WithStyles<typeof styles>) {
                                 <ListItem className={classes.mb}>
                                     <div>
                                         <span className={classes.mr}>This is a student.</span>
-                                        <ArMd>هَذَا طَالِبٌ</ArMd>
+                                        <ArMd className={classes.floatRight}>هَذَا طَالِبٌ</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>Who is this?</span>
-                                        <ArMd>مَنْ هَذَا؟</ArMd>
+                                        <ArMd className={classes.floatRight}>مَنْ هَذَا؟</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem className={classes.mb}>
                                     <div>
                                         <span className={classes.mr}>This is a boy.</span>
-                                        <ArMd>هَذَا وَلَدٌ</ArMd>
+                                        <ArMd className={classes.floatRight}>هَذَا وَلَدٌ</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>Is this a boy?</span>
-                                        <ArMd>أَهَذَا وَلَدٌ؟</ArMd>
+                                        <ArMd className={classes.floatRight}>أَهَذَا وَلَدٌ؟</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem className={classes.mb}>
                                     <div>
                                         <span className={classes.mr}>No. This is a man.</span>
-                                        <ArMd>لَا. هَذَا رَجُلٌ</ArMd>
+                                        <ArMd className={classes.floatRight}>لَا. هَذَا رَجُلٌ</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>What is this?</span>
-                                        <ArMd>مَا هَذَا؟</ArMd>
+                                        <ArMd className={classes.floatRight}>مَا هَذَا؟</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>This is a mosque.</span>
-                                        <ArMd>هَذَا مَسْجِدٌ</ArMd>
+                                        <ArMd className={classes.floatRight}>هَذَا مَسْجِدٌ</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>Who is this?</span>
-                                        <ArMd>مَنْ هَذَا؟</ArMd>
+                                        <ArMd className={classes.floatRight}>مَنْ هَذَا؟</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem className={classes.mb}>
                                     <div>
                                         <span className={classes.mr}>This is a merchant.</span>
-                                        <ArMd>تَاجِرٌ</ArMd>
+                                        <ArMd className={classes.floatRight}> هَذَا تَاجِرٌ</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>Is this a dog?</span>
-                                        <ArMd>أَ هَذَا كَلْبٌ؟</ArMd>
+                                        <ArMd className={classes.floatRight}>أَ هَذَا كَلْبٌ؟</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem className={classes.mb}>
                                     <div>
                                         <span className={classes.mr}>No. This is a kitten.</span>
-                                        <ArMd>لَا. هَذَا كِطٌ</ArMd>
+                                        <ArMd className={classes.floatRight}>لَا. هَذَا قِطٌّ</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem className={classes.mb}>
                                     <div>
                                         <span className={classes.mr}>This is a donkey.</span>
-                                        <ArMd>هَذَا حِمَارٌ</ArMd>
+                                        <ArMd className={classes.floatRight}>هَذَا حِمَارٌ</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>Is this a donkey?</span>
-                                        <ArMd>أَ هَذَا حِمَارٌ؟</ArMd>
+                                        <ArMd className={classes.floatRight}>أَ هَذَا حِمَارٌ؟</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>No. this is a horse.</span>
-                                        <ArMd>لا. هَذَا حِصَانٌ</ArMd>
+                                        <ArMd className={classes.floatRight}>لا. هَذَا حِصَانٌ</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>And what is this?</span>
-                                        <ArMd>وَ  مَا هَذَا؟</ArMd>
+                                        <ArMd className={classes.floatRight}>وَ  مَا هَذَا؟</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem className={classes.mb}>
                                     <div>
                                         <span className={classes.mr}>This is a camel.</span>
-                                        <ArMd>هَذَا جَمَلٌ</ArMd>
+                                        <ArMd className={classes.floatRight}>هَذَا جَمَلٌ</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem >
                                     <div>
                                         <span className={classes.mr}>What is this?</span>
-                                        <ArMd>مَا هَذَا؟</ArMd>
+                                        <ArMd className={classes.floatRight}>مَا هَذَا؟</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem className={classes.mb}>
                                     <div>
                                         <span className={classes.mr}>This is a rooster.</span>
-                                        <ArMd>هَذَا دِيكٌ</ArMd>
+                                        <ArMd className={classes.floatRight}>هَذَا دِيكٌ</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>Who is this?</span>
-                                        <ArMd>مَنْ هَذَا؟</ArMd>
+                                        <ArMd className={classes.floatRight}>مَنْ هَذَا؟</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem className={classes.mb}>
                                     <div>
                                         <span className={classes.mr}>This is a teacher.</span>
-                                        <ArMd>هَذَا مُدَرِّسٌ</ArMd>
+                                        <ArMd className={classes.floatRight}>هَذَا مُدَرِّسٌ</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>Is this a shirt?</span>
-                                        <ArMd>أ َهَذَا قَمِيصٌ؟</ArMd>
+                                        <ArMd className={classes.floatRight}>أ َهَذَا قَمِيصٌ؟</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>No. this is a kerchief.</span>
-                                        <ArMd>لا .هَذَا مِندِيلٌ</ArMd>
+                                        <ArMd className={classes.floatRight}>لا .هَذَا مِندِيلٌ</ArMd>
                                     </div>
                                 </ListItem>
                             </List>

@@ -5,6 +5,8 @@ import {ArMd} from "../../../components/ArabicText";
 import Grid from "@material-ui/core/Grid";
 import {WithStyles} from "@material-ui/core";
 import {styles} from "../../../styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
 
 export function NounsDecline({classes}: WithStyles<typeof styles>) {
 
@@ -26,20 +28,27 @@ export function NounsDecline({classes}: WithStyles<typeof styles>) {
                 >
                     <Grid item lg={8} sm={12} justify="center" alignContent="center" >
                         <Paper elevation={2} className={classes.paper}>
-                            <ul>
-                                <li className={classes.list}>
-                                    <ArMd className={classes.highlighted}>مُحَمَّدٌ</ArMd><ArMd> رَسُولُ اللَّهِ</ArMd>
-                                </li>
-                                <li className={classes.list}>
-                                    <ArMd>أَشْهَدُ أَنَّ </ArMd>
-                                    <ArMd className={classes.highlighted}>مُحَمَّدًا </ArMd>
-                                    <ArMd>عَبْدُهُ وَ رَسُولُهُ</ArMd>
-                                </li>
-                                <li className={classes.list}>
-                                    <ArMd>اَللَّهُمَّ صَلِّي عَلَى </ArMd>
-                                    <ArMd className={classes.highlighted}>مُحَمَّدٍ</ArMd>
-                                </li>
-                            </ul>
+                            <List dir={"rtl"} style={{textAlign: "right"}}>
+                                <ListItem>
+                                    <div  style={{lineHeight: "2.5rem", textAlign: "right"}}>
+                                        <ArMd className={`${classes.highlighted}`}>مُحَمَّدٌ</ArMd>
+                                        <ArMd> رَسُولُ اللَّهِ.</ArMd>
+                                    </div>
+                                </ListItem>
+                                <ListItem>
+                                    <div  style={{lineHeight: "2.5rem", textAlign: "right"}}>
+                                        <ArMd  >أَشْهَدُ أَنَّ </ArMd>
+                                        <ArMd className={`${classes.highlighted}`}>{" مُحَمَّدًا "}</ArMd>
+                                        <ArMd > عَبْدُهُ وَرَسُولُهُ.</ArMd>
+                                    </div>
+                                </ListItem>
+                                <ListItem>
+                                    <div  style={{lineHeight: "2.5rem", textAlign: "right"}}>
+                                        <ArMd >اَللَّهُمَّ صَلِّي عَلَى </ArMd>
+                                        <ArMd className={`${classes.highlighted}`} >مُحَمَّدٍ.</ArMd>
+                                    </div>
+                                </ListItem>
+                            </List>
                         </Paper>
                     </Grid>
                 </Grid>

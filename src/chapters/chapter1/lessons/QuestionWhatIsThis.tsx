@@ -28,13 +28,13 @@ export function QuestionWhatIsThis({classes}: WithStyles<typeof styles>) {
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>What is this?</span>
-                                        <ArMd>مَا هذا؟</ArMd>
+                                        <ArMd className={classes.floatRight}>مَا هذا؟</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>This is a house</span>
-                                        <ArMd>هَذَا بَيتٌ</ArMd>
+                                        <ArMd className={classes.floatRight}>هَذَا بَيتٌ</ArMd>
                                     </div>
                                 </ListItem>
                             </List>
@@ -59,13 +59,13 @@ export function QuestionWhatIsThis({classes}: WithStyles<typeof styles>) {
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>Is this a house?</span>
-                                        <ArMd>أَهَذَا بَيتٌ؟</ArMd>
+                                        <ArMd className={classes.floatRight}>أَهَذَا بَيتٌ؟</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>Yes. This is a house.</span>
-                                        <ArMd> نَعَم. هَذَا بَيتٌ</ArMd>
+                                        <ArMd className={classes.floatRight}> نَعَم. هَذَا بَيتٌ</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
@@ -73,7 +73,7 @@ export function QuestionWhatIsThis({classes}: WithStyles<typeof styles>) {
                                 </ListItem>
                                 <ListItem>
                                     <span className={classes.mr}>No. This is a mosque.</span>
-                                    <ArMd>لَا.هَذَا مَسْجِدٌ</ArMd>
+                                    <ArMd className={classes.floatRight}>لَا.هَذَا مَسْجِدٌ</ArMd>
                                 </ListItem>
                             </List>
                         </Paper>
@@ -99,38 +99,38 @@ export function QuestionWhatIsThis({classes}: WithStyles<typeof styles>) {
                                 <ListItem>
                                     <div>
                                         <span className={classes.mr}>What is this?</span>
-                                        <ArMd>مَا هذا؟</ArMd>
+                                        <ArMd className={classes.floatRight}>مَا هذا؟</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem className={classes.mb}>
                                     <div>
                                         <span className={classes.mr}>This is a shirt.</span>
-                                        <ArMd>هَذَا قَمِيصٌ</ArMd>
+                                        <ArMd className={classes.floatRight}>هَذَا قَمِيصٌ</ArMd>
                                     </div>
                                 </ListItem>
                                 <ListItem>
                                     <span className={classes.mr}>Is this a bed?</span>
-                                    <ArMd>أهَذَا سَرِيرٌ؟</ArMd>
+                                    <ArMd className={classes.floatRight}>أهَذَا سَرِيرٌ؟</ArMd>
                                 </ListItem>
                                 <ListItem className={classes.mb}>
                                     <span className={classes.mr}>No. this is a chair.</span>
-                                    <ArMd>لَا. هَذَا كُرسِيٌّ</ArMd>
+                                    <ArMd className={classes.floatRight}>لَا. هَذَا كُرسِيٌّ</ArMd>
                                 </ListItem>
                                 <ListItem>
                                     <span className={classes.mr}>Is this a key?</span>
-                                    <ArMd>أَ هَذَا  مِفتَاحٌ؟</ArMd>
+                                    <ArMd className={classes.floatRight}>أَ هَذَا  مِفتَاحٌ؟</ArMd>
                                 </ListItem>
                                 <ListItem className={classes.mb}>
                                     <span className={classes.mr}>No. this is a pen.</span>
-                                    <ArMd>لَا. هَذَا قَلَمٌ</ArMd>
+                                    <ArMd className={classes.floatRight}>لَا. هَذَا قَلَمٌ</ArMd>
                                 </ListItem>
                                 <ListItem>
                                     <span className={classes.mr}>What is this?</span>
-                                    <ArMd>مَا هذا؟</ArMd>
+                                    <ArMd className={classes.floatRight}>مَا هذا؟</ArMd>
                                 </ListItem>
                                 <ListItem>
                                     <span className={classes.mr}>This is a star.</span>
-                                    <ArMd>هَذَا نَجمٌ</ArMd>
+                                    <ArMd className={classes.floatRight}>هَذَا نَجمٌ</ArMd>
                                 </ListItem>
                             </List>
                         </Paper>
