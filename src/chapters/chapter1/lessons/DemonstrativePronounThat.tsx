@@ -80,7 +80,7 @@ export function DemonstrativePronounThat({classes}: WithStyles<typeof styles>) {
                 justify={"center"}
                 alignItems={"center"}
             >
-                <Grid item lg={10} sm={12} justify="center" alignContent="center" >
+                <Grid item lg={10} sm={12} >
                     <Paper elevation={2} className={classes.paper}>
                         <List>
                             <ListItem>

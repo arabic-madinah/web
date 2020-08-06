@@ -1,4 +1,6 @@
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import blue from "@material-ui/core/colors/blue";
+import white from "@material-ui/core/colors/grey";
 
 const drawerWidth = 240;
 
@@ -67,6 +69,12 @@ export const styles = (theme: Theme) => createStyles({
         },
         blue: {
             color: "blue"
+        },
+        bgBlue: {
+            background: blue[700]
+        },
+        white: {
+            color: white[50]
         },
         red: {
             color: "red"

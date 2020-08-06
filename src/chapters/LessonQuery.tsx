@@ -1,5 +1,5 @@
 import React from "react";
-import { Introduction } from "./chapter1/lessons/Introduction";
+import { PartsOfSpeech } from "./chapter1/lessons/PartsOfSpeech";
 import NextPrevPagination from "../components/NextPrevPagination";
 import { NounsDecline } from "./chapter1/lessons/NounsDecline";
 import { Chapter, Section, chapters } from "../chapters";
@@ -12,6 +12,7 @@ import {WithStyles} from "@material-ui/core";
 import {styles} from "../styles";
 import {DemonstrativePronounThat} from "./chapter1/lessons/DemonstrativePronounThat";
 import {NominalSentences} from "./chapter1/lessons/NominalSentences";
+import {DefinitenessOfNouns} from "./chapter1/lessons/DefinitenessOfNouns";
 
 export interface SectionsProps {
     children: React.ReactNode,
@@ -78,11 +79,25 @@ export function LessonQuery({ query, path, chapter, classes }: LessonQueryProps)
     switch (query.get("lesson")) {
         default:
         case chapter.lessons[0].index.toString():
-        case chapter.lessons[1].index.toString():
             dispatch(setCurrentSection(chapter.lessons[0]));
             return (
-            <Sections path={path} currentLessons={[[1, 1], [1, 2]]} complete={complete} nextLesson={[chapters[0], chapters[0].lessons[2]]}>
-                <Introduction classes={classes}/>
+            <Sections
+                path={path}
+                currentLessons={[[1, 1]]}
+                complete={complete}
+                nextLesson={[chapters[0], chapters[0].lessons[1]]}>
+                <PartsOfSpeech classes={classes}/>
+            </Sections>);
+        case chapter.lessons[1].index.toString():
+            dispatch(setCurrentSection(chapter.lessons[1]));
+            return (
+            <Sections
+                path={path}
+                currentLessons={[[1, 2]]}
+                complete={complete}
+                prevLesson={[chapters[0], chapters[0].lessons[0]]}
+                nextLesson={[chapters[0], chapters[0].lessons[2]]}>
+                <DefinitenessOfNouns classes={classes}/>
             </Sections>);
         case chapter.lessons[2].index.toString():
             dispatch(setCurrentSection(chapter.lessons[2]));

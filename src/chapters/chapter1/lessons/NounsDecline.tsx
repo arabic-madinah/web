@@ -26,7 +26,7 @@ export function NounsDecline({classes}: WithStyles<typeof styles>) {
                     justify={"center"}
                     alignItems={"center"}
                 >
-                    <Grid item lg={8} sm={12} justify="center" alignContent="center" >
+                    <Grid item lg={8} sm={12}>
                         <Paper elevation={2} className={classes.paper}>
                             <List dir={"rtl"} style={{textAlign: "right"}}>
                                 <ListItem>
@@ -57,8 +57,8 @@ export function NounsDecline({classes}: WithStyles<typeof styles>) {
                     Nouns can be categorized into three cases. These are the three summarized below:
                 </p>
 
-                <Grid container justify="center" alignItems="center">
-                    <Grid item lg={8} sm={12} justify="center" alignContent="center">
+                <Grid container>
+                    <Grid item lg={8} sm={12}>
                         <Paper elevation={2} className={classes.paper}>
                             <span>Nominative case</span>
                             <ArMd className={classes.highlighted}> ـُ</ArMd><ArMd> مَرْفُوعٌ</ArMd>

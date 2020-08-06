@@ -31,7 +31,7 @@ export function DemonstrativePronounThis({classes}: WithStyles<typeof styles>) {
                     justify={"center"}
                     alignItems={"center"}
                 >
-                    <Grid item lg={8} sm={12} justify="center" alignContent="center" >
+                    <Grid item lg={8} sm={12}>
                         <Paper elevation={2} className={classes.paper}>
                             <List>
                                 <ListItem>
@@ -69,7 +69,7 @@ export function DemonstrativePronounThis({classes}: WithStyles<typeof styles>) {
                     justify={"center"}
                     alignItems={"center"}
                 >
-                    <Grid item lg={8} sm={12} justify="center" alignContent="center" >
+                    <Grid item lg={8} sm={12}>
                         <Paper elevation={2} className={classes.paper}>
                             <List>
                                 <ListItem>
