@@ -1,13 +1,60 @@
 import React from "react";
 import SectionPage from "../../../components/SectionPage";
 import Paper from "@material-ui/core/Paper";
-import QuizComponent from "../../../components/Quiz";
+import Quiz from "../../../components/Quiz/Quiz";
 import {WithStyles} from "@material-ui/core";
 import {styles} from "../../../styles";
+import {Question} from "../../../components/Quiz/QuizQuestion";
 
-type Answer = "the book" | "a pen" | "the pen" | "books";
-const answers: Answer[] = ["the book", "a pen", "the pen", "books"];
-const correct: Answer = "the book";
+const task = "Select the correct translation.";
+const title: string = "Quiz lesson 1.2: Definite vs Indefinite";
+const questions: Question[] = [
+    {
+        id: 1,
+        question: task,
+        subject: "الْكِتَابُ",
+        answers: [
+            {id: 1, name: "the book", correct: true},
+            {id: 2, name: "a pen", correct: false},
+            {id: 3, name: "the pen", correct: false},
+            {id: 4, name: "books", correct: false}
+        ]
+    },
+    {
+        id: 2,
+        question: task,
+        subject: "بَيْتٌ",
+        answers: [
+            {id: 1, name: "a book", correct: false},
+            {id: 2, name: "a house", correct: true},
+            {id: 3, name: "houses", correct: false},
+            {id: 4, name: "the house", correct: false}
+        ]
+    },
+    {
+        id: 3,
+        question: task,
+        subject: "قَلَمٌ",
+        answers: [
+            {id: 1, name: "a book", correct: false},
+            {id: 2, name: "the house", correct: false},
+            {id: 3, name: "a pen", correct: true},
+            {id: 4, name: "books", correct: false}
+        ]
+    },
+    {
+        id: 4,
+        question: task,
+        subject: "الْقَلَمُ",
+        answers: [
+            {id: 1, name: "a book", correct: false},
+            {id: 2, name: "the book", correct: false},
+            {id: 3, name: "a pen", correct: false},
+            {id: 4, name: "the pen", correct: true}
+        ]
+    }
+
+];
 
 
 export function DefinitenessOfNouns({classes}: WithStyles<typeof styles>) {
@@ -75,12 +122,11 @@ export function DefinitenessOfNouns({classes}: WithStyles<typeof styles>) {
                 </p>
             </div>
 
-            <QuizComponent
+            <Quiz
                 classes={classes}
-                title={"Quiz lesson 1.2: Definite vs Indefinite"}
-                task={"Select the correct translation."}
-                subject={"الْكِتَابُ"}
-                answers={answers} correct={correct} />
+                title={title}
+                questions={questions}
+            />
         </SectionPage>
     )
 }
