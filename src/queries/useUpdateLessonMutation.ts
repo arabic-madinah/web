@@ -7,6 +7,7 @@ export type UpdateLessonRequest = {
   slug?: string | null;
   order?: number | null;
   content?: string | null;
+  chapterId?: string | null;
 };
 
 export default function useUpdateLessonMutation() {

@@ -9,7 +9,6 @@ type Chapter = {
 
 type Lesson = {
   id: string;
-  chapterId: string;
   title: string;
   slug: string;
   order: number;

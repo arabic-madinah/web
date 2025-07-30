@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { http } from "./http.ts";
 
-type Lesson = {
+export type Lesson = {
   id: string;
   chapterId: string;
   title: string;

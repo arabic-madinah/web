@@ -7,6 +7,7 @@ import useUpdateLessonMutation from "../queries/useUpdateLessonMutation.ts";
 import MdxEditor from "../components/mdx/MdxEditor.tsx";
 import SaveButton from "../components/SaveButton.tsx";
 import EditableSlug from "../components/form/EditableSlug.tsx";
+import ChapterPicker from "../components/ChapterPicker.tsx";
 
 export interface EditLessonPageProps {
   lessonId: string;
@@ -21,6 +22,7 @@ const EditLessonPage: FC<EditLessonPageProps> = ({ lessonId }) => {
       title: lesson?.title || "",
       slug: lesson?.slug || "",
       content: lesson?.content || "",
+      chapterId: lesson?.chapter.id,
     },
     enableReinitialize: true,
     onSubmit: async (values) => {
@@ -31,6 +33,7 @@ const EditLessonPage: FC<EditLessonPageProps> = ({ lessonId }) => {
         slug: values.slug,
         content: values.content,
         order: lesson?.order ?? null,
+        chapterId: values.chapterId ?? null,
       });
       if (values.slug !== lesson?.slug) {
         await router.navigate({
@@ -70,12 +73,25 @@ const EditLessonPage: FC<EditLessonPageProps> = ({ lessonId }) => {
         className={"mb-1"}
       />
 
-      <EditableSlug
-        value={formik.values.slug}
-        onChange={formik.handleChange}
-        placeholder={"Enter slug..."}
-        className={"mb-2"}
-      />
+      <div
+        className={
+          "flex flex-row justify-between items-start align-bottom gap-4 mb-3"
+        }
+      >
+        <ChapterPicker
+          chapterId={formik.values.chapterId}
+          onChange={(c) => {
+            formik.setFieldValue("chapterId", c);
+          }}
+        />
+
+        <EditableSlug
+          value={formik.values.slug}
+          onChange={formik.handleChange}
+          placeholder={"Enter slug..."}
+          className={"flex-1 mb-2"}
+        />
+      </div>
 
       <MdxEditor
         value={formik.values.content}
