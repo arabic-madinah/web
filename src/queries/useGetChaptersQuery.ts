@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { http } from "./http.ts";
+import { createRouteMap } from "../utils/routeMap/createRouteMap.ts";
 
 export type Lesson = {
   id: string;
@@ -30,8 +31,12 @@ export default function useGetChaptersQuery() {
     },
   });
 
+  const chapters = data?.data.chapters || [];
+  const routeMap = createRouteMap(chapters);
+
   return {
-    chapters: data?.data.chapters || [],
+    chapters,
+    routeMap,
     ...query,
   };
 }

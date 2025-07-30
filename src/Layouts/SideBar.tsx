@@ -37,7 +37,7 @@ const SideBar: FC = () => {
         <span className="text-xl font-bold text-sky-100">My-Arabic</span>
       </div>
 
-      <nav className="space-y-2 pt-2">
+      <nav className="space-y-1 pt-2">
         <Link
           to="/"
           className={`block px-3 py-2 rounded transition ${

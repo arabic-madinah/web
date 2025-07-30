@@ -3,6 +3,7 @@ import type { FC } from "react";
 import SideBar from "./SideBar.tsx";
 import { ClipboardPlus, CopyPlus, User } from "lucide-react";
 import PrimaryButton from "../components/PrimaryButton.tsx";
+import PageNavigatorButtons from "../components/PageNavigatorButtons.tsx";
 
 const AppLayout: FC = () => {
   return (
@@ -41,6 +42,8 @@ const AppLayout: FC = () => {
         {/* Scrollable Main Section */}
         <main className="overflow-y-auto p-6 flex-1">
           <Outlet />
+
+          <PageNavigatorButtons />
         </main>
       </div>
     </div>
