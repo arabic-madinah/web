@@ -6,6 +6,7 @@ import EditLessonPage from "./pages/EditLessonPage.tsx";
 import EditChapterPage from "./pages/EditChapterPage.tsx";
 import AddChapterPage from "./pages/AddChapterPage.tsx";
 import AddLessonPage from "./pages/AddLessonPage.tsx";
+import HomePage from "./pages/HomePage.tsx";
 
 const rootRoute = createRootRoute({
   component: AppLayout,
@@ -14,7 +15,7 @@ const rootRoute = createRootRoute({
 const homeRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
-  component: () => <>Hello</>,
+  component: () => <HomePage />,
 });
 
 const lessonRoute = createRoute({

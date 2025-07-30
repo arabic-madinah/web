@@ -5,10 +5,13 @@ import useGetChaptersQuery from "../queries/useGetChaptersQuery.ts";
 
 const PageNavigatorButtons: FC = () => {
   const routerState = useRouterState();
-  const { routeMap, isLoading } = useGetChaptersQuery();
+  const { routeMap, firstRoute, isLoading } = useGetChaptersQuery();
 
   const currentPageNode = routeMap[routerState.location.pathname];
-  const nextRoute = currentPageNode?.nextRoute;
+  const nextRoute =
+    routerState.location.pathname == "/"
+      ? firstRoute?.route
+      : currentPageNode?.nextRoute;
   const prevRoute = currentPageNode?.prevRoute;
 
   if (isLoading) {

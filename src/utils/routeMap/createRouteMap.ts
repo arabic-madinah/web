@@ -2,7 +2,11 @@ import type { PageNode } from "./PageNode.ts";
 import type { Chapter } from "../../queries/useGetChaptersQuery.ts";
 import type { RouteMap } from "./RouteMap.ts";
 
-export function createRouteMap(chapters: Chapter[]): RouteMap {
+export function createRouteMap(chapters: Chapter[]): {
+  routeMap: RouteMap;
+  firstRoute: PageNode | null;
+  lastRoute: PageNode | null;
+} {
   const flatList: PageNode[] = [];
 
   chapters.forEach((chapter) => {
@@ -20,6 +24,8 @@ export function createRouteMap(chapters: Chapter[]): RouteMap {
       });
     });
   });
+  const firstRoute = flatList.length > 0 ? flatList[0] : null;
+  const lastRoute = flatList.length > 0 ? flatList[flatList.length - 1] : null;
 
   const routeMap: RouteMap = {};
 
@@ -32,5 +38,5 @@ export function createRouteMap(chapters: Chapter[]): RouteMap {
     };
   });
 
-  return routeMap;
+  return { routeMap, firstRoute, lastRoute };
 }

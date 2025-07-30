@@ -32,11 +32,13 @@ export default function useGetChaptersQuery() {
   });
 
   const chapters = data?.data.chapters || [];
-  const routeMap = createRouteMap(chapters);
+  const { routeMap, firstRoute, lastRoute } = createRouteMap(chapters);
 
   return {
     chapters,
     routeMap,
+    firstRoute,
+    lastRoute,
     ...query,
   };
 }
