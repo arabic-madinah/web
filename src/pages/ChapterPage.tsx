@@ -17,7 +17,7 @@ const ChapterPage: FC<ChapterPageProps> = ({ chapterId }) => {
 
   return (
     <div>
-      <div className={"text-xl font-semibold"}>{chapter.title}</div>
+      <div className={"text-3xl font-semibold"}>{chapter.title}</div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 // components/Quiz.tsx
 import { useState } from "react";
 
-interface QuizProps {
+export interface QuizProps {
   question: string;
   options: string[];
   answer: number; // index of correct answer
@@ -26,10 +26,10 @@ export const Quiz = ({ question, options, answer }: QuizProps) => {
           const borderColor = !showResult
             ? "border-slate-300"
             : isSelected && isCorrect
-            ? "border-green-500 bg-green-100 dark:bg-green-700/30"
-            : isSelected && !isCorrect
-            ? "border-red-500 bg-red-100 dark:bg-red-700/30"
-            : "border-slate-200";
+              ? "border-green-500 bg-green-100 dark:bg-green-700/30"
+              : isSelected && !isCorrect
+                ? "border-red-500 bg-red-100 dark:bg-red-700/30"
+                : "border-slate-200";
 
           return (
             <li

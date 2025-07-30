@@ -19,7 +19,7 @@ const LessonPage: FC<LessonPageProps> = ({ lessonId }) => {
 
   return (
     <div>
-      <div className={"text-xl font-semibold"}>{lesson.title}</div>
+      <div className={"text-3xl font-semibold"}>{lesson.title}</div>
 
       <div className="mt-4">
         <MdxRenderer content={lesson.content} />

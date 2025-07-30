@@ -31,11 +31,13 @@ const SideBar: FC = () => {
   const isActive = (path: string) => currentPath === path;
 
   return (
-    <aside className="w-64 bg-slate-700 p-4 flex-shrink-0 hidden md:block shadow-md">
-      <h2 className="text-xl font-bold text-sky-400 mb-6 tracking-tight">
-        📚 My-Arabic
-      </h2>
-      <nav className="space-y-2">
+    <aside className="w-64 bg-neutral-700 p-4 flex-shrink-0 hidden md:block shadow-md">
+      <div className={"flex px-3 space-x-3 items-center align-bottom"}>
+        <img src={"/logo.png"} alt={"logo"} className={"size-8 rounded"} />
+        <span className="text-xl font-bold text-sky-100">My-Arabic</span>
+      </div>
+
+      <nav className="space-y-2 pt-2">
         <Link
           to="/"
           className={`block px-3 py-2 rounded transition ${

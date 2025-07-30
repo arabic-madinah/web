@@ -22,7 +22,7 @@ export default function EditableTitle({
       name={"title"}
       placeholder={placeholder}
       onChange={onChange}
-      className={`bg-transparent text-xl font-semibold px-1 py-1 transition-all duration-100
+      className={`bg-transparent text-3xl font-semibold px-1 py-1 transition-all duration-100
         outline-none w-full
         border border-transparent caret-transparent
         hover:border-blue-400 hover:caret-blue-500

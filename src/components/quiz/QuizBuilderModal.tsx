@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { QuizBuilder } from "./QuizBuilder";
+import { QuizBuilder } from "./QuizBuilder.tsx";
 
 type QuizBuilderModalProps = {
   isOpen: boolean;

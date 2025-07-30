@@ -33,9 +33,9 @@ const MdxEditor: FC<MdxEditorProps> = ({ defaultValue, value, onChange }) => {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col flex-grow overflow-y-auto">
       {/* Toolbar on top full width */}
-      <div className="p-2 border-b border-gray-300 dark:border-gray-700">
+      <div className="px-2 border-b border-gray-300 dark:border-gray-700">
         <MdxToolbar
           onInsert={insertAtCursor}
           viewMode={viewMode}
@@ -56,7 +56,7 @@ const MdxEditor: FC<MdxEditorProps> = ({ defaultValue, value, onChange }) => {
               value={value}
               onChange={(e) => onChange(e.target.value)}
               className="flex-grow p-4 font-mono text-sm bg-transparent
-           text-black dark:text-gray-400 outline-none resize-none
+           text-black dark:text-gray-200 outline-none resize-none
            border border-transparent caret-transparent
            hover:border-blue-400 hover:caret-blue-500
            focus:border-blue-400 focus:caret-blue-500"
@@ -67,7 +67,7 @@ const MdxEditor: FC<MdxEditorProps> = ({ defaultValue, value, onChange }) => {
         {/* Right side: Live Preview */}
         {(viewMode === "split" || viewMode === "preview") && (
           <div
-            className={`${viewMode === "split" ? "w-1/2" : "w-full"} p-6 overflow-auto text-black dark:text-white`}
+            className={`${viewMode === "split" ? "w-1/2" : "w-full"} flex flex-col h-full overflow-auto p-6  text-black dark:text-white`}
           >
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <MdxRenderer content={value} />

@@ -37,9 +37,9 @@ export const QuizBuilder = ({ onCreate, onCancel }: QuizBuilderProps) => {
       return;
     }
 
-    const snippet = `<Quiz question="${question.trim()}" answers={${JSON.stringify(
-      trimmedAnswers
-    )}} correct={${correctIndex}} />`;
+    const snippet = `<Quiz question="${question.trim()}" options={${JSON.stringify(
+      trimmedAnswers,
+    )}} answer={${correctIndex}} />`;
 
     onCreate(snippet);
   };

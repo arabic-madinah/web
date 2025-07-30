@@ -1,10 +1,12 @@
 import type { FC } from "react";
 import useGetChapterBySlugQuery from "../queries/useGetChapterBySlugQuery.ts";
-import EditableTitle from "../components/EditableTitle.tsx";
+import EditableTitle from "../components/form/EditableTitle.tsx";
 import { useFormik } from "formik";
 import useUpdateChapterMutation from "../queries/useUpdateChapterMutation.ts";
 import { useRouter } from "@tanstack/react-router";
 import ReorderChaptersModal from "../components/ReOrderChaptersModal.tsx";
+import EditableSlug from "../components/form/EditableSlug.tsx";
+import SaveButton from "../components/SaveButton.tsx";
 
 export interface EditChapterPageProps {
   chapterId: string;
@@ -45,22 +47,15 @@ const EditChapterPage: FC<EditChapterPageProps> = ({ chapterId }) => {
   }
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} className={"relative"}>
       {isPending && (
         <div className="absolute inset-0 z-10 bg-white/10 flex items-center justify-center pointer-events-none">
           <div className="h-8 w-8 border-2 border-blue-300 border-t-transparent rounded-full animate-spin" />
         </div>
       )}
 
-      <div className="sticky top-0 z-10 flex justify-end items-end py-2">
-        <button
-          type={"submit"}
-          //onClick={handleSave}
-          disabled={isPending || isLoading}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
-        >
-          Save
-        </button>
+      <div className="absolute right-0 top-0 z-10 py-2">
+        <SaveButton disabled={isLoading || isPending} />
       </div>
 
       <EditableTitle
@@ -70,18 +65,11 @@ const EditChapterPage: FC<EditChapterPageProps> = ({ chapterId }) => {
         className={"mb-1"}
       />
 
-      <input
-        name="slug"
-        id="slug"
+      <EditableSlug
         value={formik.values.slug}
         onChange={formik.handleChange}
         placeholder={"Enter slug..."}
-        className="bg-transparent px-1 py-1 text-sm text-gray-500
-          outline-none
-          border border-transparent caret-transparent
-        hover:border-blue-400 hover:caret-blue-500
-        focus:border-blue-400 focus:caret-blue-500
-        rounded"
+        className={"mb-2"}
       />
 
       <ReorderChaptersModal />
