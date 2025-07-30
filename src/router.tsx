@@ -4,6 +4,8 @@ import LessonPage from "./pages/LessonPage.tsx";
 import ChapterPage from "./pages/ChapterPage.tsx";
 import EditLessonPage from "./pages/EditLessonPage.tsx";
 import EditChapterPage from "./pages/EditChapterPage.tsx";
+import AddChapterPage from "./pages/AddChapterPage.tsx";
+import AddLessonPage from "./pages/AddLessonPage.tsx";
 
 const rootRoute = createRootRoute({
   component: AppLayout,
@@ -21,6 +23,14 @@ const lessonRoute = createRoute({
   component: () => {
     const { lessonId } = lessonRoute.useParams() as { lessonId: string };
     return <LessonPage lessonId={lessonId} />;
+  },
+});
+
+const createLessonRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/lessons-create",
+  component: () => {
+    return <AddLessonPage />;
   },
 });
 
@@ -42,6 +52,14 @@ const chapterRoute = createRoute({
   },
 });
 
+const createChapterRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/chapters-create",
+  component: () => {
+    return <AddChapterPage />;
+  },
+});
+
 const editChapterRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/chapters/$chapterId/edit",
@@ -54,8 +72,10 @@ const editChapterRoute = createRoute({
 const routeTree = rootRoute.addChildren([
   homeRoute,
   chapterRoute,
+  createChapterRoute,
   editChapterRoute,
   lessonRoute,
+  createLessonRoute,
   editLessonRoute,
 ]);
 export const router = new Router({ routeTree });

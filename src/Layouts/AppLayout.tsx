@@ -1,8 +1,8 @@
-import { Outlet } from "@tanstack/react-router";
+import { Link, Outlet } from "@tanstack/react-router";
 import type { FC } from "react";
 import SideBar from "./SideBar.tsx";
-import { Button } from "@headlessui/react";
-import { User } from "lucide-react";
+import { ClipboardPlus, CopyPlus, User } from "lucide-react";
+import PrimaryButton from "../components/PrimaryButton.tsx";
 
 const AppLayout: FC = () => {
   return (
@@ -14,13 +14,27 @@ const AppLayout: FC = () => {
       <div className="flex flex-col flex-1 overflow-hidden">
         {/* Header */}
         <header className="bg-neutral-700 border-b border-slate-600 p-4 sticky top-0 z-10">
-          <div className={"flex justify-between"}>
+          <div className={"flex justify-between items-center"}>
             <h1 className="text-lg font-semibold text-sky-100">
               Madinah Arabic
             </h1>
-            <Button>
-              <User />
-            </Button>
+            <div className={"flex items-center space-x-2"}>
+              <Link to={"/lessons-create"}>
+                <PrimaryButton className={"bg-transparent"}>
+                  <ClipboardPlus />
+                  Add Lesson
+                </PrimaryButton>
+              </Link>
+              <Link to={"/chapters-create"}>
+                <PrimaryButton className={"bg-transparent"}>
+                  <CopyPlus />
+                  Add Chapter
+                </PrimaryButton>
+              </Link>
+              <PrimaryButton>
+                <User size={16} />
+              </PrimaryButton>
+            </div>
           </div>
         </header>
 
