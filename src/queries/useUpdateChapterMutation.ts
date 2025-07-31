@@ -5,6 +5,7 @@ export type UpdateChapterRequest = {
   id: string;
   title: string | null;
   slug: string | null;
+  content: string | null;
   order: number | null;
 };
 

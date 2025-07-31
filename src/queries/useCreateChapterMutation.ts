@@ -4,6 +4,7 @@ import { http } from "./http.ts";
 export type CreateChapterRequest = {
   title: string;
   slug: string;
+  content: string;
   order: number | null;
 };
 

@@ -6,6 +6,7 @@ import SaveButton from "../components/SaveButton.tsx";
 import EditableTitle from "../components/form/EditableTitle.tsx";
 import EditableSlug from "../components/form/EditableSlug.tsx";
 import ReorderChaptersModal from "../components/ReOrderChaptersModal.tsx";
+import MdxEditor from "../components/mdx/MdxEditor.tsx";
 
 const AddChapterPage: FC = () => {
   const router = useRouter();
@@ -15,6 +16,7 @@ const AddChapterPage: FC = () => {
     initialValues: {
       title: "",
       slug: "",
+      content: "",
       order: null,
     },
     onSubmit: async (values) => {
@@ -22,6 +24,7 @@ const AddChapterPage: FC = () => {
       await mutateAsync({
         title: values.title,
         slug: values.slug,
+        content: values.content,
         order: values.order,
       });
       await router.navigate({
@@ -57,6 +60,18 @@ const AddChapterPage: FC = () => {
       />
 
       <ReorderChaptersModal />
+
+      <MdxEditor
+        value={formik.values.content}
+        onChange={(value) =>
+          formik.handleChange({
+            target: {
+              name: "content",
+              value,
+            },
+          })
+        }
+      />
     </form>
   );
 };

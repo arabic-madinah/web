@@ -5,6 +5,7 @@ type Chapter = {
   id: string;
   title: string;
   slug: string;
+  content: string;
   order: number;
   createdAt: string;
   updatedAt: string|null;

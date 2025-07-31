@@ -7,6 +7,7 @@ import { useRouter } from "@tanstack/react-router";
 import ReorderChaptersModal from "../components/ReOrderChaptersModal.tsx";
 import EditableSlug from "../components/form/EditableSlug.tsx";
 import SaveButton from "../components/SaveButton.tsx";
+import MdxEditor from "../components/mdx/MdxEditor.tsx";
 
 export interface EditChapterPageProps {
   chapterId: string;
@@ -20,6 +21,7 @@ const EditChapterPage: FC<EditChapterPageProps> = ({ chapterId }) => {
     initialValues: {
       title: chapter?.title || "",
       slug: chapter?.slug || "",
+      content: chapter?.content || "",
     },
     enableReinitialize: true,
     onSubmit: async (values) => {
@@ -28,6 +30,7 @@ const EditChapterPage: FC<EditChapterPageProps> = ({ chapterId }) => {
         id: chapter?.id || "",
         title: values.title,
         slug: values.slug,
+        content: values.content,
         order: chapter?.order ?? null,
       });
       if (values.slug !== chapter?.slug) {
@@ -73,6 +76,18 @@ const EditChapterPage: FC<EditChapterPageProps> = ({ chapterId }) => {
       />
 
       <ReorderChaptersModal />
+
+      <MdxEditor
+        value={formik.values.content}
+        onChange={(value) =>
+          formik.handleChange({
+            target: {
+              name: "content",
+              value,
+            },
+          })
+        }
+      />
     </form>
   );
 };
