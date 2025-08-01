@@ -5,7 +5,6 @@ import useCreateChapterMutation from "../queries/useCreateChapterMutation.ts";
 import SaveButton from "../components/SaveButton.tsx";
 import EditableTitle from "../components/form/EditableTitle.tsx";
 import EditableSlug from "../components/form/EditableSlug.tsx";
-import ReorderChaptersModal from "../components/ReOrderChaptersModal.tsx";
 import MdxEditor from "../components/mdx/MdxEditor.tsx";
 
 const AddChapterPage: FC = () => {
@@ -58,8 +57,6 @@ const AddChapterPage: FC = () => {
         placeholder={"Enter slug..."}
         className={"mb-2"}
       />
-
-      <ReorderChaptersModal />
 
       <MdxEditor
         value={formik.values.content}

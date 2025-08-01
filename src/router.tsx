@@ -8,6 +8,8 @@ import AddChapterPage from "./pages/AddChapterPage.tsx";
 import AddLessonPage from "./pages/AddLessonPage.tsx";
 import HomePage from "./pages/HomePage.tsx";
 
+import CourseOutlineEditor from "./components/courseReordering/CourseOutlineEditor.tsx";
+
 const rootRoute = createRootRoute({
   component: AppLayout,
 });
@@ -32,6 +34,14 @@ const createLessonRoute = createRoute({
   path: "/lessons-create",
   component: () => {
     return <AddLessonPage />;
+  },
+});
+
+const dndRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/course-editor",
+  component: () => {
+    return <CourseOutlineEditor />;
   },
 });
 
@@ -78,5 +88,6 @@ const routeTree = rootRoute.addChildren([
   lessonRoute,
   createLessonRoute,
   editLessonRoute,
+  dndRoute,
 ]);
 export const router = new Router({ routeTree });

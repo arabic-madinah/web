@@ -1,7 +1,7 @@
 import { Link, Outlet } from "@tanstack/react-router";
 import type { FC } from "react";
 import SideBar from "./SideBar.tsx";
-import { ClipboardPlus, CopyPlus, User } from "lucide-react";
+import { BookA, BookOpenCheck, TableOfContents, User } from "lucide-react";
 import PrimaryButton from "../components/PrimaryButton.tsx";
 import PageNavigatorButtons from "../components/PageNavigatorButtons.tsx";
 
@@ -20,15 +20,21 @@ const AppLayout: FC = () => {
               Madinah Arabic
             </h1>
             <div className={"flex items-center space-x-2"}>
+              <Link to={"/course-editor"}>
+                <PrimaryButton className={"bg-transparent"}>
+                  <TableOfContents />
+                  Course Editor
+                </PrimaryButton>
+              </Link>
               <Link to={"/lessons-create"}>
                 <PrimaryButton className={"bg-transparent"}>
-                  <ClipboardPlus />
+                  <BookOpenCheck />
                   Add Lesson
                 </PrimaryButton>
               </Link>
               <Link to={"/chapters-create"}>
                 <PrimaryButton className={"bg-transparent"}>
-                  <CopyPlus />
+                  <BookA />
                   Add Chapter
                 </PrimaryButton>
               </Link>

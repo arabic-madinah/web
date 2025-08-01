@@ -4,7 +4,6 @@ import EditableTitle from "../components/form/EditableTitle.tsx";
 import { useFormik } from "formik";
 import useUpdateChapterMutation from "../queries/useUpdateChapterMutation.ts";
 import { useRouter } from "@tanstack/react-router";
-import ReorderChaptersModal from "../components/ReOrderChaptersModal.tsx";
 import EditableSlug from "../components/form/EditableSlug.tsx";
 import SaveButton from "../components/SaveButton.tsx";
 import MdxEditor from "../components/mdx/MdxEditor.tsx";
@@ -74,8 +73,6 @@ const EditChapterPage: FC<EditChapterPageProps> = ({ chapterId }) => {
         placeholder={"Enter slug..."}
         className={"mb-2"}
       />
-
-      <ReorderChaptersModal />
 
       <MdxEditor
         value={formik.values.content}
