@@ -5,6 +5,7 @@ export interface PrimaryButtonProps extends PropsWithChildren {
   disabled?: boolean;
   type?: "submit" | "button" | "reset";
   className?: string;
+  onClick?: () => void;
 }
 
 const PrimaryButton: FC<PrimaryButtonProps> = ({
@@ -12,11 +13,13 @@ const PrimaryButton: FC<PrimaryButtonProps> = ({
   children,
   type = "button",
   className,
+  onClick,
 }) => {
   return (
     <Button
       type={type}
       disabled={disabled}
+      onClick={onClick}
       className={`inline-flex items-center gap-2 rounded-md bg-gray-700
         px-3 py-1.5 h-10 text-sm/6 font-semibold text-white shadow-inner
         shadow-white/10 focus:not-data-focus:outline-none data-focus:outline
