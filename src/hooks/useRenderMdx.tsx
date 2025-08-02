@@ -3,6 +3,7 @@ import * as provider from "@mdx-js/react";
 import { evaluate } from "@mdx-js/mdx";
 import * as runtime from "react/jsx-runtime";
 import { type ComponentType, useMemo } from "react";
+import MdxError from "../components/mdx/MdxError.tsx";
 
 export default function useRenderMdx(content: string) {
   const query = useQuery({
@@ -22,8 +23,8 @@ export default function useRenderMdx(content: string) {
 
   // Fallback error component
   const ErrorComponent = useMemo(
-    () => () => <div className="text-red-500">Error rendering MDX</div>,
-    [],
+    () => () => <MdxError message={query.error?.message} />,
+    [query.error?.message],
   );
 
   return {

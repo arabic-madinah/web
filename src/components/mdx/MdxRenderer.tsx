@@ -5,6 +5,8 @@ import { Quiz, type QuizProps } from "../quiz/Quiz.tsx";
 import Note from "../Note.tsx";
 import RedText from "../text/RedText.tsx";
 import BlueText from "../text/BlueText.tsx";
+import { ErrorBoundary } from "react-error-boundary";
+import MdxError from "./MdxError.tsx";
 
 export interface MdxRendererProps {
   content?: string;
@@ -100,9 +102,21 @@ const MdxRenderer: FC<MdxRendererProps> = ({ content }) => {
   return isRendering ? (
     <div className="text-gray-500">Rendering content...</div>
   ) : (
-    <MDXProvider components={components}>
-      <Component />
-    </MDXProvider>
+    <ErrorBoundary
+      fallbackRender={({ error, resetErrorBoundary }) => (
+        <>
+          <MdxError message={error?.toString()} />
+          <button onClick={resetErrorBoundary}>Click to reset</button>
+        </>
+      )}
+      onReset={(details) => {
+        console.log("Error boundary reset", details);
+      }}
+    >
+      <MDXProvider components={components}>
+        <Component />
+      </MDXProvider>
+    </ErrorBoundary>
   );
 };
 

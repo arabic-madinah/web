@@ -1,10 +1,11 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { type FC } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { type FC, useEffect } from "react";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import useGetChaptersQuery from "../queries/useGetChaptersQuery.ts";
 
 const PageNavigatorButtons: FC = () => {
   const routerState = useRouterState();
+  const navigate = useNavigate();
   const { routeMap, firstRoute, isLoading } = useGetChaptersQuery();
 
   const currentPageNode = routeMap[routerState.location.pathname];
@@ -13,6 +14,23 @@ const PageNavigatorButtons: FC = () => {
       ? firstRoute?.route
       : currentPageNode?.nextRoute;
   const prevRoute = currentPageNode?.prevRoute;
+
+  useEffect(() => {
+    const handleKeyDown = async (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft" && prevRoute) {
+        event.preventDefault();
+        await navigate({ to: prevRoute });
+      } else if (event.key === "ArrowRight" && nextRoute) {
+        event.preventDefault();
+        await navigate({ to: nextRoute });
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown, true);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown, true);
+    };
+  }, [nextRoute, prevRoute, navigate]);
 
   if (isLoading) {
     return null;

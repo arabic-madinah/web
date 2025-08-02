@@ -31,7 +31,7 @@ const LessonPage: FC<LessonPageProps> = ({ lessonId }) => {
         </Link>
       </div>
 
-      <div className="mt-4">
+      <div className="mt-4 pb-8">
         <MdxRenderer content={lesson.content} />
       </div>
     </div>

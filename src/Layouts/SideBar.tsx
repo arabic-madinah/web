@@ -46,10 +46,10 @@ const SideBar: FC<SideBarProps> = ({ setIsSidebarOpen, isSidebarOpen }) => {
       )}
 
       <aside
-        // className="w-64 bg-neutral-700 p-4 flex-shrink-0 hidden md:block shadow-md"
         className={classNames(
-          "fixed inset-y-0 left-0 z-50 w-64 bg-neutral-700 p-4 shadow-md transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:block",
+          "fixed inset-y-0 left-0 w-64 bg-neutral-700 p-4 shadow-md transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:block",
           {
+            "z-50": isSidebarOpen,
             "translate-x-0": isSidebarOpen,
             "-translate-x-full": !isSidebarOpen,
             //hidden: !isSidebarOpen, // optional fallback

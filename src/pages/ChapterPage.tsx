@@ -30,7 +30,7 @@ const ChapterPage: FC<ChapterPageProps> = ({ chapterId }) => {
         </Link>
       </div>
 
-      <div className="mt-4">
+      <div className="mt-4 pb-8">
         <MdxRenderer content={chapter.content} />
       </div>
     </div>
