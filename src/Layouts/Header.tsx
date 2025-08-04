@@ -1,7 +1,7 @@
 import { type FC } from "react";
 import PrimaryButton from "../components/PrimaryButton.tsx";
 import { MenuIcon } from "lucide-react";
-import { useCommandPalette } from "@/provider/useCommandPalette.ts";
+import { useCommandPalette } from "@/provider/commandPalette/useCommandPalette.ts";
 import { CommandShortcut } from "@/components/ui/command.tsx";
 
 interface HeaderProps {

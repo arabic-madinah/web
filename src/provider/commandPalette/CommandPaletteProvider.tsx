@@ -11,18 +11,19 @@ import {
 } from "@/components/ui/command.tsx";
 import { BookA, BookOpenCheck, TableOfContents, User } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
-import { CommandPaletteContext } from "./CommandPaletteContext";
+import { CommandPaletteContext } from "./CommandPaletteContext.tsx";
 import { useSearchRoutes } from "@/hooks/useSearchRoutes.ts";
+import { useLoginDialog } from "@/provider/loginDialog/useLoginDialog.ts";
 
 const CommandPaletteProvider: FC<PropsWithChildren> = ({ children }) => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const { setOpen: openLoginDialog } = useLoginDialog();
 
   const [searchInput, setSearchInput] = useState("");
   const { search } = useSearchRoutes();
 
   const routes = search(searchInput);
-  console.log({ routes });
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -35,19 +36,24 @@ const CommandPaletteProvider: FC<PropsWithChildren> = ({ children }) => {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const selectCommand = (command: string) => {
+  type CommandType =
+    | "create-chapter"
+    | "create-lesson"
+    | "course-editor"
+    | "login";
+  const selectCommand = (command: CommandType) => {
     switch (command) {
-      case "Add Chapter":
+      case "create-chapter":
         navigate({ to: "/chapters-create" });
         break;
-      case "Add Lesson":
+      case "create-lesson":
         navigate({ to: "/lessons-create" });
         break;
-      case "Course Editor":
+      case "course-editor":
         navigate({ to: "/course-editor" });
         break;
-      case "Profile":
-        navigate({ to: "/login" });
+      case "login":
+        openLoginDialog(true);
         break;
       default:
         console.warn("Unknown command:", command);
@@ -87,24 +93,24 @@ const CommandPaletteProvider: FC<PropsWithChildren> = ({ children }) => {
               </CommandGroup>
             ) : null}
             <CommandGroup heading="Quick Commands">
-              <CommandItem onSelect={() => selectCommand("Add Chapter")}>
+              <CommandItem onSelect={() => selectCommand("create-chapter")}>
                 <BookA />
                 <span>Add Chapter</span>
                 <CommandShortcut>⌘C</CommandShortcut>
               </CommandItem>
-              <CommandItem onSelect={() => selectCommand("Add Lesson")}>
+              <CommandItem onSelect={() => selectCommand("create-lesson")}>
                 <BookOpenCheck />
                 <span>Add Lesson</span>
                 <CommandShortcut>⌘L</CommandShortcut>
               </CommandItem>
-              <CommandItem onSelect={() => selectCommand("Course Editor")}>
+              <CommandItem onSelect={() => selectCommand("course-editor")}>
                 <TableOfContents />
                 <span>Course Editor</span>
               </CommandItem>
             </CommandGroup>
             <CommandSeparator />
             <CommandGroup heading="Settings">
-              <CommandItem>
+              <CommandItem onSelect={() => selectCommand("login")}>
                 <User />
                 <span>Login</span>
                 <CommandShortcut>⌘P</CommandShortcut>

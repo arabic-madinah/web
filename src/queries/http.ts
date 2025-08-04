@@ -8,3 +8,7 @@ export const http = axios.create({
     Accept: "application/json",
   },
 });
+http.interceptors.request.use(function (config) {
+  config.headers["X-API-KEY"] = localStorage.getItem("passcode");
+  return config;
+});

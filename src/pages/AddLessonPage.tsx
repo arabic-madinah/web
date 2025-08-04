@@ -55,7 +55,7 @@ const AddLessonPage: FC = () => {
       <EditableTitle
         value={formik.values.title}
         onChange={formik.handleChange}
-        placeholder={"Enter chapter title..."}
+        placeholder={"Enter lesson title..."}
         className={"mb-1"}
       />
 

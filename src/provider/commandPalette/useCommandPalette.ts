@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CommandPaletteContext } from "@/provider/CommandPaletteContext.tsx";
+import { CommandPaletteContext } from "@/provider/commandPalette/CommandPaletteContext.tsx";
 
 export const useCommandPalette = () => {
   const context = useContext(CommandPaletteContext);
