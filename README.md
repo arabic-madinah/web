@@ -1,69 +1,162 @@
-# React + TypeScript + Vite
+# My-Arabic Learning Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive Arabic language learning web application inspired by the Madinah Books series. This platform provides an interactive way to study Arabic grammar and vocabulary through structured chapters and lessons.
 
-Currently, two official plugins are available:
+## 🎯 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**My-Arabic.com** aims to provide a full in-depth Arabic grammar and vocabulary course. It is inspired by Br. Asif's lessons on YouTube, which are based on the three Madinah Books by Dr. V. Abdur Raheem. This site compiles these works into a single user-friendly and interactive web-course.
 
-## Expanding the ESLint configuration
+## 🏗️ Architecture
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This is a full-stack application with:
+- **Frontend**: React + TypeScript + Vite
+- **Backend**: ASP.NET Core 9.0 Web API
+- **Database**: PostgreSQL
+- **Styling**: TailwindCSS + Custom CSS variables
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ✨ Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Content Management
+- **Chapter Management**: Create, edit, and organize course chapters
+- **Lesson Management**: Structured lessons within chapters with MDX support
+- **Content Editor**: Rich text editing with MDX for interactive content
+- **Drag & Drop Reordering**: Intuitive course structure management
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### User Experience
+- **Command Palette**: Quick navigation with `Cmd/Ctrl+K`
+- **Keyboard Navigation**: Arrow keys for page navigation
+- **Responsive Design**: Mobile-friendly interface
+- **Dark/Light Theme**: Adaptive UI theming
+- **Interactive Quizzes**: Built-in quiz components for learning assessment
+
+### Navigation & Search
+- **Hierarchical Navigation**: Chapter-based sidebar with expandable lessons
+- **Route-based Search**: Find chapters and lessons quickly
+- **Page Navigation**: Previous/next navigation between content
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React 18** with TypeScript
+- **Vite** for build tooling
+- **TanStack Router** for routing
+- **TanStack Query** for API data management
+- **Formik** for form handling
+- **Axios** for HTTP requests
+- **Lucide React** for icons
+- **@dnd-kit** for drag-and-drop functionality
+- **TailwindCSS** for styling
+
+### Backend
+- **ASP.NET Core 9.0** Web API
+- **Entity Framework Core** with PostgreSQL
+- **JWT Authentication** with API key security
+- **CORS** enabled for cross-origin requests
+- **OpenAPI/Swagger** documentation
+
+### Database Schema
+- **Chapters**: Title, slug, content, order, timestamps
+- **Lessons**: Title, slug, content, order, chapter relationship, timestamps
+- **Hierarchical Structure**: Chapters contain multiple lessons
+
+## 🚀 Getting Started
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [.NET 9.0 SDK](https://dotnet.microsoft.com/download)
+- [PostgreSQL](https://www.postgresql.org/)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd my-arabic-v2
+   ```
+
+2. **Frontend Setup:**
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+3. **Backend Setup:**
+   ```bash
+   cd server
+   dotnet restore
+   dotnet run
+   ```
+
+4. **Database Setup:**
+   - Ensure PostgreSQL is running
+   - Update connection string in `appsettings.json`
+   - Database migrations run automatically on startup
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+```env
+API_BASE_URL=http://localhost:5192
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📚 Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### For Learners
+- Navigate through chapters using the sidebar
+- Complete lessons in order using keyboard navigation (←/→)
+- Take interactive quizzes embedded in lessons
+- Use the command palette (`Cmd/Ctrl+K`) for quick navigation
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### For Content Creators
+- Login to access editing features
+- Create new chapters and lessons
+- Use the MDX editor for rich content creation
+- Reorder content using the drag-and-drop course editor
+- Add interactive quiz components to lessons
+
+### Keyboard Shortcuts
+- `Cmd/Ctrl+K` - Open command palette
+- `←/→` - Navigate between pages
+- `Cmd/Ctrl+C` - Add new chapter (when logged in)
+- `Cmd/Ctrl+L` - Add new lesson (when logged in)
+
+## 🏛️ Project Structure
+
 ```
+my-arabic-v2/
+├── src/
+│   ├── components/          # Reusable UI components
+│   │   ├── quiz/           # Quiz components
+│   │   ├── mdx/            # MDX editor components
+│   │   └── courseReordering/ # Drag-and-drop functionality
+│   ├── pages/              # Page components
+│   ├── queries/            # API queries and mutations
+│   ├── provider/           # Context providers
+│   └── Layouts/            # Layout components
+└── server/
+    ├── Features/           # Feature-based organization
+    │   ├── Chapters/       # Chapter CRUD operations
+    │   ├── Lessons/        # Lesson CRUD operations
+    │   └── Reorder/        # Content reordering
+    ├── DataAccess/         # Database context and repositories
+    └── Models/             # Entity models
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+This project is inspired by educational content from the Madinah Books series and aims to make Arabic learning more accessible through modern web technologies.
+
+## 🙏 Acknowledgments
+
+- Dr. V. Abdur Raheem for the Madinah Books series
+- Br. Asif for the YouTube lessons that inspired this platform
+- The Arabic learning community for their continued support
+
