@@ -55,8 +55,8 @@ const MdxEditor: FC<MdxEditorProps> = ({ defaultValue, value, onChange }) => {
               ref={textareaRef}
               value={value}
               onChange={(e) => onChange(e.target.value)}
-              className="flex-grow p-4 font-mono text-sm bg-transparent
-           text-black dark:text-gray-200 outline-none resize-none
+              className="dark flex-grow p-4 font-mono text-sm bg-transparent
+           text-gray-200 dark:text-gray-200 outline-none resize-none
            border border-transparent caret-transparent
            hover:border-blue-400 hover:caret-blue-500
            focus:border-blue-400 focus:caret-blue-500"
@@ -67,7 +67,7 @@ const MdxEditor: FC<MdxEditorProps> = ({ defaultValue, value, onChange }) => {
         {/* Right side: Live Preview */}
         {(viewMode === "split" || viewMode === "preview") && (
           <div
-            className={`${viewMode === "split" ? "w-1/2" : "w-full"} flex flex-col h-full overflow-auto p-6  text-black dark:text-white`}
+            className={`${viewMode === "split" ? "w-1/2" : "w-full"} flex flex-col h-full overflow-auto p-6  text-gray-200 dark:text-white`}
           >
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <MdxRenderer content={value} />

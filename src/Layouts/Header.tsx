@@ -1,13 +1,8 @@
 import { type FC } from "react";
-import { Link } from "@tanstack/react-router";
 import PrimaryButton from "../components/PrimaryButton.tsx";
-import {
-  BookA,
-  BookOpenCheck,
-  MenuIcon,
-  TableOfContents,
-  User,
-} from "lucide-react";
+import { MenuIcon } from "lucide-react";
+import { useCommandPalette } from "@/provider/useCommandPalette.ts";
+import { CommandShortcut } from "@/components/ui/command.tsx";
 
 interface HeaderProps {
   setIsSidebarOpen: (isOpen: boolean) => void;
@@ -15,6 +10,8 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
+  const { setOpen } = useCommandPalette();
+
   return (
     <header className="bg-neutral-700 border-b border-slate-600 p-4 sticky top-0 z-10">
       <div className={"flex justify-between items-center"}>
@@ -31,26 +28,12 @@ const Header: FC<HeaderProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
         </div>
 
         <div className={"flex items-center space-x-2"}>
-          <Link to={"/course-editor"}>
-            <PrimaryButton className={"bg-transparent"}>
-              <TableOfContents />
-              Course Editor
-            </PrimaryButton>
-          </Link>
-          <Link to={"/lessons-create"}>
-            <PrimaryButton className={"bg-transparent"}>
-              <BookOpenCheck />
-              Add Lesson
-            </PrimaryButton>
-          </Link>
-          <Link to={"/chapters-create"}>
-            <PrimaryButton className={"bg-transparent"}>
-              <BookA />
-              Add Chapter
-            </PrimaryButton>
-          </Link>
-          <PrimaryButton>
-            <User size={16} />
+          <PrimaryButton
+            className={"bg-transparent"}
+            onClick={() => setOpen(true)}
+          >
+            <CommandShortcut className={"text-gray-400"}>⌘K</CommandShortcut>
+            <span>Actions</span>
           </PrimaryButton>
         </div>
       </div>
