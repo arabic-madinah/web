@@ -1,5 +1,10 @@
-import { useEffect } from "react";
 import { QuizBuilder } from "./QuizBuilder.tsx";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog.tsx";
 
 type QuizBuilderModalProps = {
   isOpen: boolean;
@@ -12,45 +17,18 @@ export const QuizBuilderModal = ({
   onClose,
   onInsert,
 }: QuizBuilderModalProps) => {
-  // Close modal on Escape key press
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
-
   return (
-    <>
-      {/* Overlay */}
-      <div
-        className="fixed inset-0 bg-black bg-opacity-50 z-40"
-        onClick={onClose}
-        aria-hidden="true"
-      />
-
-      {/* Modal container */}
-      <div
-        role="dialog"
-        aria-modal="true"
-        className="fixed inset-0 flex items-center justify-center p-4 z-50"
-        onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside modal
-      >
-        <div className="bg-white dark:bg-slate-900 rounded-lg shadow-lg max-w-md w-full p-6">
-          {/* Title */}
-          <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-white">
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent className="max-w-2xl w-full p-0">
+        <DialogHeader>
+          <DialogTitle className="text-lg font-bold text-gray-900 dark:text-white px-6 pt-6">
             Create Quiz
-          </h2>
-
-          {/* QuizBuilder component */}
+          </DialogTitle>
+        </DialogHeader>
+        <div className="px-6 pb-6">
           <QuizBuilder onCreate={onInsert} onCancel={onClose} />
         </div>
-      </div>
-    </>
+      </DialogContent>
+    </Dialog>
   );
 };
