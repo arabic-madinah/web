@@ -33,7 +33,10 @@ const AddChapterPage: FC = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit} className={"relative"}>
+    <form
+      onSubmit={formik.handleSubmit}
+      className={"relative h-full flex flex-col"}
+    >
       {isPending && (
         <div className="absolute inset-0 z-10 bg-white/10 flex items-center justify-center pointer-events-none">
           <div className="h-8 w-8 border-2 border-blue-300 border-t-transparent rounded-full animate-spin" />
