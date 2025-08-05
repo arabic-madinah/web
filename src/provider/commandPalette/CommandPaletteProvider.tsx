@@ -65,7 +65,11 @@ const CommandPaletteProvider: FC<PropsWithChildren> = ({ children }) => {
     <CommandPaletteContext.Provider value={{ open, setOpen }}>
       {children}
       <>
-        <CommandDialog open={open} onOpenChange={setOpen} className={"dark"}>
+        <CommandDialog
+          open={open}
+          onOpenChange={setOpen}
+          className="dark -mt-24 md:mt-0"
+        >
           <CommandInput
             placeholder="Type a command or search..."
             value={searchInput}
