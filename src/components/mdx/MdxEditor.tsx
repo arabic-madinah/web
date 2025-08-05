@@ -21,7 +21,7 @@ const MdxEditor: FC<MdxEditorProps> = ({ defaultValue, value, onChange }) => {
     "split",
   );
 
-  const insertAtCursor = (snippet: string, cursorOffset?: number = 0) => {
+  const insertAtCursor = (snippet: string, cursorOffset: number = 0) => {
     const codeMirrorRef = ref.current;
 
     const view = codeMirrorRef?.view;
