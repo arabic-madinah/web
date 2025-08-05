@@ -68,7 +68,7 @@ const CommandPaletteProvider: FC<PropsWithChildren> = ({ children }) => {
         <CommandDialog
           open={open}
           onOpenChange={setOpen}
-          className="dark -mt-24 md:mt-0"
+          className="-mt-24 md:mt-0"
         >
           <CommandInput
             placeholder="Type a command or search..."

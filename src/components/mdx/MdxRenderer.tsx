@@ -14,37 +14,15 @@ export interface MdxRendererProps {
 
 const components = {
   Quiz: (props: Partial<QuizProps>) => {
-    if (!props.options) {
+    if (!props.questions) {
       return (
         <span className="text-red-600">
-          Missing required property 'options' in Quiz component.
+          Missing required property 'questions' in Quiz component.
         </span>
       );
     }
 
-    if (!props.question) {
-      return (
-        <span className="text-red-600">
-          Missing required property 'question' in Quiz component.
-        </span>
-      );
-    }
-
-    if (!props.answer) {
-      return (
-        <span className="text-red-600">
-          Missing required property 'answer' in Quiz component.
-        </span>
-      );
-    }
-
-    return (
-      <Quiz
-        question={props.question}
-        options={props.options}
-        answer={props.answer}
-      />
-    );
+    return <Quiz questions={props.questions} />;
   },
   Note,
   RedText,
