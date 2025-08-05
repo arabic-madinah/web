@@ -8,10 +8,11 @@ export interface QuizQuestion {
 }
 
 export interface QuizProps {
+  title?: string;
   questions: QuizQuestion[];
 }
 
-export const Quiz = ({ questions }: QuizProps) => {
+export const Quiz = ({ questions, title = "Quiz" }: QuizProps) => {
   const [selectedAnswers, setSelectedAnswers] = useState<(number | null)[]>(
     Array(questions.length).fill(null),
   );
@@ -46,7 +47,7 @@ export const Quiz = ({ questions }: QuizProps) => {
   return (
     <div className="my-6 p-4 bg-white dark:bg-slate-800 border border-slate-300 rounded shadow max-w-xl mx-auto">
       <div className="mb-4 flex items-center justify-between">
-        <span className="font-semibold text-lg">Quiz</span>
+        <span className="font-semibold text-lg">{title}</span>
         <span className="text-sm">
           Correct:{" "}
           <span className="text-green-600 dark:text-green-400 font-bold">

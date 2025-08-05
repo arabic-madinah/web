@@ -22,7 +22,7 @@ const components = {
       );
     }
 
-    return <Quiz questions={props.questions} />;
+    return <Quiz title={props.title} questions={props.questions} />;
   },
   Note,
   RedText,
