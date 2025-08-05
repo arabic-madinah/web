@@ -11,7 +11,7 @@ import {
 import classNames from "classnames";
 
 type MdxToolbarProps = {
-  onInsert: (snippet: string) => void;
+  onInsert: (snippet: string, cursorOffest?: number) => void;
   viewMode?: "split" | "editor" | "preview";
   setViewMode?: (mode: "split" | "editor" | "preview") => void;
 };
@@ -34,7 +34,7 @@ export const MdxToolbar: FC<MdxToolbarProps> = ({
         <div className="flex space-x-1">
           <Button
             type={"button"}
-            onClick={() => onInsert("<Note>This is a note</Note>\n")}
+            onClick={() => onInsert("<Note></Note>\n", "<Note>".length)}
             className="inline-flex items-center gap-2 px-2 py-1.5 data-hover:bg-gray-600"
           >
             <StickyNote size={20} /> Note

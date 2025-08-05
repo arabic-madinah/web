@@ -1,6 +1,12 @@
 import { type FC, useRef, useState } from "react";
 import { MdxToolbar } from "./MdxToolbar.tsx";
 import MdxRenderer from "./MdxRenderer.tsx";
+import ReactCodeMirror, {
+  type ReactCodeMirrorRef,
+} from "@uiw/react-codemirror";
+import { markdown } from "@codemirror/lang-markdown";
+import { javascript } from "@codemirror/lang-javascript";
+import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 
 interface MdxEditorProps {
   defaultValue?: string;
@@ -10,25 +16,34 @@ interface MdxEditorProps {
 }
 
 const MdxEditor: FC<MdxEditorProps> = ({ defaultValue, value, onChange }) => {
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const ref = useRef<ReactCodeMirrorRef>(null);
   const [viewMode, setViewMode] = useState<"split" | "editor" | "preview">(
     "split",
   );
 
-  const insertAtCursor = (snippet: string) => {
-    const textarea = textareaRef.current;
-    if (!textarea) return;
+  const insertAtCursor = (snippet: string, cursorOffset?: number = 0) => {
+    const codeMirrorRef = ref.current;
 
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
-    const newValue = value.slice(0, start) + snippet + value.slice(end);
+    const view = codeMirrorRef?.view;
 
-    onChange?.(newValue);
+    if (!view) {
+      return;
+    }
 
-    // Reset cursor after insertion
+    const { from } = view.state.selection.main;
+
+    const replace = view.state.replaceSelection(snippet);
+
+    view.dispatch({
+      ...replace,
+      selection: cursorOffset
+        ? { anchor: from + cursorOffset }
+        : replace.selection,
+      scrollIntoView: true,
+    });
+
     setTimeout(() => {
-      textarea.focus();
-      textarea.selectionStart = textarea.selectionEnd = start + snippet.length;
+      view.focus();
     }, 0);
   };
 
@@ -50,16 +65,21 @@ const MdxEditor: FC<MdxEditorProps> = ({ defaultValue, value, onChange }) => {
           <div
             className={`${viewMode === "split" ? "w-1/2" : "w-full"} flex flex-col`}
           >
-            <textarea
+            <ReactCodeMirror
               defaultValue={defaultValue}
-              ref={textareaRef}
+              ref={ref}
               value={value}
-              onChange={(e) => onChange(e.target.value)}
-              className="dark flex-grow p-4 font-mono text-sm bg-transparent
-           text-gray-200 dark:text-gray-200 outline-none resize-none
+              onChange={(value) => {
+                console.log({ onChange, value });
+                onChange(value);
+              }}
+              theme={vscodeDark}
+              className="flex-grow text-black
+           outline-none resize-none
            border border-transparent caret-transparent
            hover:border-blue-400 hover:caret-blue-500
            focus:border-blue-400 focus:caret-blue-500"
+              extensions={[markdown(), javascript({ jsx: true })]}
             />
           </div>
         )}
