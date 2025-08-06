@@ -80,6 +80,7 @@ const SideBar: FC<SideBarProps> = ({ setIsSidebarOpen, isSidebarOpen }) => {
           >
             Home
           </Link>
+          <hr />
           {chapters.map((chapter) => {
             const isChapterExpanded = expandedChapterId === chapter.id;
             const chapterPath = `/chapters/${chapter.slug}`;
