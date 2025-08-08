@@ -9,16 +9,24 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command.tsx";
-import { BookA, BookOpenCheck, TableOfContents, User } from "lucide-react";
+import {
+  BookA,
+  BookOpenCheck,
+  TableOfContents,
+  Trash,
+  User,
+} from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import { CommandPaletteContext } from "./CommandPaletteContext.tsx";
 import { useSearchRoutes } from "@/hooks/useSearchRoutes.ts";
 import { useLoginDialog } from "@/provider/loginDialog/useLoginDialog.ts";
+import { useProgress } from "@/provider/progressTracking/useProgressTracking.ts";
 
 const CommandPaletteProvider: FC<PropsWithChildren> = ({ children }) => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const { setOpen: openLoginDialog } = useLoginDialog();
+  const { resetProgress } = useProgress();
 
   const [searchInput, setSearchInput] = useState("");
   const { search } = useSearchRoutes();
@@ -40,7 +48,8 @@ const CommandPaletteProvider: FC<PropsWithChildren> = ({ children }) => {
     | "create-chapter"
     | "create-lesson"
     | "course-editor"
-    | "login";
+    | "login"
+    | "clear-progress";
   const selectCommand = (command: CommandType) => {
     switch (command) {
       case "create-chapter":
@@ -54,6 +63,12 @@ const CommandPaletteProvider: FC<PropsWithChildren> = ({ children }) => {
         break;
       case "login":
         openLoginDialog(true);
+        break;
+      case "clear-progress":
+        if (confirm("Are you sure you want to clear your progress?")) {
+          resetProgress();
+          alert("Progress cleared!");
+        }
         break;
       default:
         console.warn("Unknown command:", command);
@@ -118,6 +133,10 @@ const CommandPaletteProvider: FC<PropsWithChildren> = ({ children }) => {
                 <User />
                 <span>Login</span>
                 <CommandShortcut>⌘P</CommandShortcut>
+              </CommandItem>
+              <CommandItem onSelect={() => selectCommand("clear-progress")}>
+                <Trash />
+                <span>Clear Progress</span>
               </CommandItem>
             </CommandGroup>
           </CommandList>

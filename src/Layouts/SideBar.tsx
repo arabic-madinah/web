@@ -1,8 +1,11 @@
 import { type FC, useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import useGetChaptersQuery from "../queries/useGetChaptersQuery.ts";
+import useGetChaptersQuery, {
+  type Chapter,
+} from "../queries/useGetChaptersQuery.ts";
 import classNames from "classnames";
-import { XIcon } from "lucide-react";
+import { CircleCheck, XIcon } from "lucide-react";
+import { useProgress } from "@/provider/progressTracking/useProgressTracking.ts";
 
 interface SideBarProps {
   setIsSidebarOpen: (open: boolean) => void;
@@ -11,9 +14,12 @@ interface SideBarProps {
 
 const SideBar: FC<SideBarProps> = ({ setIsSidebarOpen, isSidebarOpen }) => {
   const { chapters } = useGetChaptersQuery();
+  const { progress } = useProgress();
   const [expandedChapterId, setExpandedChapterId] = useState<string | null>(
     null,
   );
+
+  console.log({ progress });
 
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
@@ -34,6 +40,16 @@ const SideBar: FC<SideBarProps> = ({ setIsSidebarOpen, isSidebarOpen }) => {
   }, [currentPath, chapters]);
 
   const isActive = (path: string) => currentPath === path;
+
+  // Helper to calculate chapter progress as average of lesson progresses
+  const getChapterProgress = (chapter: Chapter) => {
+    if (!chapter.lessons || chapter.lessons.length === 0) return undefined;
+    const lessonProgresses = chapter.lessons.map(
+      (lesson) => progress[lesson.id] ?? 0,
+    );
+    const sum = lessonProgresses.reduce((a, b) => a + b, 0);
+    return sum / chapter.lessons.length;
+  };
 
   return (
     <>
@@ -84,13 +100,14 @@ const SideBar: FC<SideBarProps> = ({ setIsSidebarOpen, isSidebarOpen }) => {
             const isChapterExpanded = expandedChapterId === chapter.id;
             const chapterPath = `/chapters/${chapter.slug}`;
             const isChapterActive = isActive(chapterPath);
+            const chapterProgress = getChapterProgress(chapter);
 
             return (
               <div key={chapter.id}>
                 <div className="relative">
                   <Link
                     to={chapterPath}
-                    className={`flex items-center justify-between px-3 py-2 rounded w-full transition ${
+                    className={`block flex items-center justify-between px-3 py-2 rounded w-full transition ${
                       isChapterActive
                         ? "bg-sky-600 text-white"
                         : "hover:bg-sky-600 hover:text-white text-slate-100"
@@ -103,7 +120,21 @@ const SideBar: FC<SideBarProps> = ({ setIsSidebarOpen, isSidebarOpen }) => {
                       }
                     }}
                   >
-                    <span className="flex-1">{chapter.title}</span>
+                    <span className="flex items-center gap-2">
+                      {/* Chapter Progress Icon Prefix */}
+                      {chapterProgress ? (
+                        <span
+                          className="flex-shrink-0 flex items-center justify-center"
+                          style={{ width: 24, height: 24, minWidth: 24 }}
+                        >
+                          <CircularProgress value={chapterProgress ?? 0} />
+                        </span>
+                      ) : null}
+                      {/* Show max 2 lines, truncate with ellipsis if needed */}
+                      <span className="line-clamp-2 overflow-hidden break-words max-w-[160px]">
+                        {chapter.title}
+                      </span>
+                    </span>
 
                     {chapter.lessons?.length > 0 && (
                       <span className="ml-auto" aria-hidden="true">
@@ -136,17 +167,24 @@ const SideBar: FC<SideBarProps> = ({ setIsSidebarOpen, isSidebarOpen }) => {
                     {chapter.lessons.map((lesson) => {
                       const lessonPath = `/lessons/${lesson.slug}`;
                       const isLessonActive = currentPath === lessonPath;
+                      const progressValue = progress[lesson.id];
 
                       return (
                         <Link
                           key={lesson.id}
                           to={lessonPath}
-                          className={`block text-sm px-3 py-1 rounded transition ${
+                          className={`block text-sm px-3 py-1 rounded transition flex items-center gap-2 ${
                             isLessonActive
                               ? "bg-sky-500 text-white"
                               : "text-slate-200 hover:bg-sky-500 hover:text-white"
                           }`}
                         >
+                          {/* Progress Icon Prefix */}
+                          {progressValue === undefined ? null : (
+                            <span className="inline-flex items-center justify-center">
+                              <CircularProgress value={progressValue} />
+                            </span>
+                          )}
                           {lesson.title}
                         </Link>
                       );
@@ -159,6 +197,62 @@ const SideBar: FC<SideBarProps> = ({ setIsSidebarOpen, isSidebarOpen }) => {
         </nav>
       </aside>
     </>
+  );
+};
+
+// Circular progress indicator component
+const CircularProgress: FC<{ value: number }> = ({ value }) => {
+  // Hide if no progress
+  if (!value || value <= 0) return null;
+
+  const size = 16; // Make both SVG and icon 16x16 for consistency
+  const radius = 7;
+  const stroke = 2.5;
+  const normalizedRadius = radius - stroke / 2;
+  const circumference = normalizedRadius * 2 * Math.PI;
+  const percent = Math.min(value, 1.0);
+  const strokeDashoffset = circumference - percent * circumference;
+
+  const showCheck = percent >= 1.0;
+
+  if (showCheck) {
+    return (
+      <CircleCheck
+        size={size}
+        color={"#22c55e"}
+        style={{
+          pointerEvents: "none",
+          display: "block",
+        }}
+      />
+    );
+  }
+
+  return (
+    <svg width={size} height={size} style={{ display: "block" }}>
+      {/* Background dashed circle */}
+      <circle
+        cx={size / 2}
+        cy={size / 2}
+        r={normalizedRadius}
+        stroke="#e5e7eb"
+        strokeWidth={stroke}
+        fill="none"
+        strokeDasharray="2,2"
+      />
+      {/* Progress arc */}
+      <circle
+        cx={size / 2}
+        cy={size / 2}
+        r={normalizedRadius}
+        stroke="#22c55e"
+        strokeWidth={stroke}
+        fill="none"
+        strokeDasharray={circumference}
+        strokeDashoffset={strokeDashoffset}
+        style={{ transition: "stroke-dashoffset 0.3s" }}
+      />
+    </svg>
   );
 };
 

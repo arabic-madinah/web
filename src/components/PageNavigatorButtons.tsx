@@ -2,11 +2,13 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { type FC, useEffect } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import useGetChaptersQuery from "../queries/useGetChaptersQuery.ts";
+import { useProgress } from "@/provider/progressTracking/useProgressTracking.ts";
 
 const PageNavigatorButtons: FC = () => {
   const routerState = useRouterState();
   const navigate = useNavigate();
   const { routeMap, firstRoute, isLoading } = useGetChaptersQuery();
+  const { markCompleted } = useProgress();
 
   const currentPageNode = routeMap[routerState.location.pathname];
   const nextRoute =
@@ -23,6 +25,11 @@ const PageNavigatorButtons: FC = () => {
       } else if (event.key === "ArrowRight" && nextRoute) {
         event.preventDefault();
         await navigate({ to: nextRoute });
+      } else if (event.key === "ArrowRight" && !nextRoute) {
+        event.preventDefault();
+        if (currentPageNode) {
+          markCompleted(currentPageNode.id);
+        }
       }
     };
     document.addEventListener("keydown", handleKeyDown, true);
@@ -51,7 +58,7 @@ const PageNavigatorButtons: FC = () => {
         )}
       </div>
       <div className={"w-1/2 flex justify-start flex-wrap"}>
-        {nextRoute && (
+        {nextRoute ? (
           <Link
             to={nextRoute}
             className="py-1 px-2 bg-white/70 text-black dark:bg-gray-500/40 dark:text-white shadow-lg shadow-black/20 flex items-center justify-center backdrop-blur-sm z-20 rounded-lg overflow-hidden"
@@ -60,6 +67,13 @@ const PageNavigatorButtons: FC = () => {
             {routeMap[nextRoute]?.title || ""}
             <ArrowRight size={18} />
           </Link>
+        ) : (
+          <button
+            className="py-1 px-2 bg-white/70 text-black dark:bg-gray-500/40 dark:text-white shadow-lg shadow-black/20 flex items-center justify-center backdrop-blur-sm z-20 rounded-lg overflow-hidden"
+            onClick={() => markCompleted(currentPageNode.id)}
+          >
+            Complete <ArrowRight size={18} />
+          </button>
         )}
       </div>
     </div>

@@ -1,5 +1,5 @@
 import type { PageNode } from "./PageNode.ts";
-import type { Chapter } from "../../queries/useGetChaptersQuery.ts";
+import type { Chapter } from "@/queries/useGetChaptersQuery.ts";
 import type { RouteMap } from "./RouteMap.ts";
 
 export function createRouteMap(chapters: Chapter[]): {
@@ -11,6 +11,8 @@ export function createRouteMap(chapters: Chapter[]): {
 
   chapters.forEach((chapter) => {
     flatList.push({
+      id: chapter.id,
+      type: "chapter",
       route: `/chapters/${chapter.slug}`,
       title: chapter.title,
       slug: chapter.slug,
@@ -18,6 +20,8 @@ export function createRouteMap(chapters: Chapter[]): {
 
     chapter.lessons?.forEach((lesson) => {
       flatList.push({
+        id: lesson.id,
+        type: "lesson",
         route: `/lessons/${lesson.slug}`,
         title: lesson.title,
         slug: lesson.slug,
@@ -31,6 +35,8 @@ export function createRouteMap(chapters: Chapter[]): {
 
   flatList.forEach((item, index) => {
     routeMap[item.route] = {
+      id: item.id,
+      type: item.type,
       title: item.title,
       slug: item.slug,
       prevRoute: index > 0 ? flatList[index - 1].route : null,
