@@ -7,6 +7,16 @@ import RedText from "../text/RedText.tsx";
 import BlueText from "../text/BlueText.tsx";
 import { ErrorBoundary } from "react-error-boundary";
 import MdxError from "./MdxError.tsx";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table.tsx";
+import * as React from "react";
 
 export interface MdxRendererProps {
   content?: string;
@@ -57,6 +67,13 @@ const components = {
       HTMLParagraphElement
     >,
   ) => <p className="mb-4" {...props} />,
+  a: (
+    props: DetailedHTMLProps<
+      HTMLAttributes<HTMLAnchorElement>,
+      HTMLAnchorElement
+    >,
+  ) => <a className="text-blue-600 hover:underline" {...props} />,
+
   ul: (
     props: DetailedHTMLProps<
       HTMLAttributes<HTMLUListElement>,
@@ -72,6 +89,20 @@ const components = {
   li: (
     props: DetailedHTMLProps<HTMLAttributes<HTMLLIElement>, HTMLLIElement>,
   ) => <li className="mb-2" {...props} />,
+  hr: (
+    props: DetailedHTMLProps<HTMLAttributes<HTMLHRElement>, HTMLHRElement>,
+  ) => <hr className="my-3" {...props} />,
+  Table: (props: React.ComponentProps<"table">) => <Table {...props} />,
+  TableHeader: (props: React.ComponentProps<"thead">) => (
+    <TableHeader {...props} />
+  ),
+  TableRow: (props: React.ComponentProps<"tr">) => <TableRow {...props} />,
+  TableHead: (props: React.ComponentProps<"th">) => <TableHead {...props} />,
+  TableBody: (props: React.ComponentProps<"tbody">) => <TableBody {...props} />,
+  TableCell: (props: React.ComponentProps<"td">) => <TableCell {...props} />,
+  TableFooter: (props: React.ComponentProps<"tfoot">) => (
+    <TableFooter {...props} />
+  ),
 };
 
 const MdxRenderer: FC<MdxRendererProps> = ({ content }) => {

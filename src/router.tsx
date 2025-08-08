@@ -1,4 +1,9 @@
-import { createRootRoute, createRoute, Router } from "@tanstack/react-router";
+import {
+  createRootRoute,
+  createRoute,
+  HeadContent,
+  Router,
+} from "@tanstack/react-router";
 import AppLayout from "./Layouts/AppLayout";
 import LessonPage from "./pages/LessonPage.tsx";
 import ChapterPage from "./pages/ChapterPage.tsx";
@@ -11,7 +16,19 @@ import HomePage from "./pages/HomePage.tsx";
 import CourseOutlineEditor from "./components/courseReordering/CourseOutlineEditor.tsx";
 
 const rootRoute = createRootRoute({
-  component: AppLayout,
+  component: () => (
+    <>
+      <HeadContent />
+      <AppLayout />
+    </>
+  ),
+  head: () => ({
+    meta: [
+      {
+        title: import.meta.env.DEV ? "Dev - My-Arabic" : "My-Arabic",
+      },
+    ],
+  }),
 });
 
 const homeRoute = createRoute({
